@@ -1,0 +1,260 @@
+/* * {
+    outline: 1px solid #000;
+} */
+.row,
+p,
+h1,h2,h3,h4,h5,
+label,ul
+{
+    margin: 0 auto;
+}
+
+
+.container{
+    max-width: 1200px;
+}
+
+.carFinishContainer_ZY{
+background-color: #383e44;
+border-radius: 4px;
+padding-top: 20px;
+padding-bottom: 50px;
+margin: 20px auto;
+}
+
+.carFinishContainerTitle_ZY{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+}
+
+.carFinishContainerTitle_ZY i{
+    font-size: 50px;
+    color: #7fe0dc;
+}
+
+.carFinishContainerTitle_ZY p{
+    width: 100%;
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+}
+
+.carFinishContainerBtnGroup_ZY{
+display: flex;
+justify-content: space-around;
+align-items: center;
+margin-bottom: 50px;
+}
+
+.carFinishContainerBtn_ZY{
+    width: 200px;
+    height: 50px;
+    border: none;
+    background-color: #7FE0DC;
+    color: #383e44;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+.carFinishContainerBtn_ZY:hover{
+    background-color: #4AC8C2;
+}
+
+.carFinishInforContainer_ZY{
+    width: 1100px;
+    background-color: white;
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.carRecipientInforBox_ZY{
+    width: 100%;
+    color: #383E44;
+}
+
+.carRecipientInforTitle_ZY{
+    width: 100%;
+    margin-top: 20px;
+
+}
+
+.carRecipientInforTitle_ZY p{
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    color: #383E44;
+}
+
+.carRecipientInfor_ZY{
+    width: 100%;
+    padding: 0 40px;
+    border-bottom: 1px solid #383E44;
+}
+
+.carRecipientInfor_ZY table {
+width: 100%;
+}
+.carRecipientInfor_ZY tr{
+    margin: 10;
+}
+.carRecipientInfor_ZY th{
+    width: 80px;
+    padding: 10px 0px 10px 0;
+}
+.carRecipientInfor_ZY td{
+    padding: 10px 10px 10px 0px;
+}
+
+.carline_ZY{
+    display: none;
+    /* background-color: #828792;
+    width: 100%;
+    height: 1px; */
+}
+
+.carRecipientItemBox_ZY{
+    width: 100%;
+    display: flex;
+    padding: 0 40px;
+}
+
+.carRecipientItemTitle_ZY{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 5px auto;
+    border-bottom: 2px solid #383E44;
+}
+
+.carRecipientItem_ZY{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 5px auto;
+    border-bottom: 1px solid #383E44;
+}
+.carRecipientItem_ZY p{
+    font-size: 14px;
+}
+.carlinebold_ZY{
+    display: none;
+    /* width: 100%;
+    height:2px;
+    background-color: #383e44; */
+}
+
+.carRecipientItemText_ZY{
+    text-align:left;
+}
+.carRecipientTotleprice{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    border-top: 1px solid #383e44;
+}
+
+.carRecipientTotleprice div{
+    margin: 10px ;
+}
+.carRecipientTotleprice p{
+    font-size: 20px;
+}
+
+@media screen and (max-width:375px) 
+{
+    .container{
+        width: 355px;
+        margin: 0 auto;
+    }
+    .carFinishContainer_ZY{
+        margin: 10px auto;
+        padding: 10px;    
+    }
+    .carFinishContainerTitle_ZY{
+    margin: 10px;
+    }
+    .carFinishContainerTitle_ZY i{
+        font-size: 40px;
+    }
+    .carFinishContainerTitle_ZY p{
+        font-size: 16px;
+        margin: 5px auto;
+    }
+    .carFinishContainerBtn_ZY{
+        width: 140px;
+        height: 35px;
+        font-size: 16px;
+    }
+
+    .carFinishContainerBtnGroup_ZY{
+        margin-bottom: 20px;
+    }
+
+    .carFinishInforContainer_ZY{
+        width: 100%;
+        padding: 10px ;
+    }
+    .carRecipientInforTitle_ZY{
+        margin: 0 auto 20px;
+        /* margin-bottom: 10px; */
+    }
+    .carRecipientInfor_ZY{
+        padding: 0 5px;
+        font-size: 14px;
+    }
+    .carRecipientInfor_ZY th{
+        width: 80px;
+        padding: 5px;
+        font-weight: bold;
+    }
+    .carRecipientInfor_ZY td{
+        padding: 5px;
+    }
+    .carlistMobileHide_ZY{
+        display: none;
+    }
+    
+    .carRecipientItem_ZY{
+        width: 100%;
+        height: auto;
+        padding-bottom: 5px;
+    }
+    .carRecipientItemMobile_ZY{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .carMarginPadding0_ZY{
+        margin: 0;
+        padding: 0;
+    }
+    .carRecipientItem_ZY p,
+    .carListFont_ZY{
+        font-size: 14px;
+        font-weight: normal;
+    }
+    
+    .carline_ZY{
+        display: none;
+        /* border: 1px solid #8f99a3;
+        border-radius: 2px; */
+    }
+
+    .carRecipientItemBox_ZY{
+        padding: 0 5px;
+    }
+
+    .carRecipientItemTitle_ZY{
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
