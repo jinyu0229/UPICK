@@ -473,7 +473,6 @@
 
 <!--SCRIPT-->
 <?php include __DIR__ . '/../../parts/scripts.php' ?>
-
 <script>
 // 帳號格式錯誤
 const email = document.querySelector('.memEmailCheck_HC');
