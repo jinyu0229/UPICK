@@ -1,4 +1,11 @@
-
+<?php
+// $email = intval($_GET['email']);
+// $sql = "SELECT * FROM members WHERE `email`=$email";
+// $row = $pdo->query($sql)->fetch();
+// if(empty($row)){
+//     exit;
+// };
+?>
 
 <!DOCTYPE html>
 <html lang="en">
