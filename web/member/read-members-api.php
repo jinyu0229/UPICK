@@ -11,8 +11,7 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 
 if($stmt->rowCount()){
-    $row = $stmt->fetch();
-    
+    $row = $stmt->fetch();    
 }
 
 header('Content-Type: application/json');
