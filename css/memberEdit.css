@@ -115,6 +115,7 @@
         .memColumnWhite_HC>p {
             font-size: 14px;
             font-weight: 700;
+            margin-bottom: 0;
         }
 
         .memColumnWhite_HC>input {
