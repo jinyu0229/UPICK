@@ -16,7 +16,6 @@ $output = [
     'postData' => $_POST
 ];
 
-
 // TODO: 欄位資料檢查
 
 // 檢查手機號碼格式
