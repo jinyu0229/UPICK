@@ -1,10 +1,17 @@
-<?php
-// $email = intval($_GET['email']);
-// $sql = "SELECT * FROM members WHERE `email`=$email";
-// $row = $pdo->query($sql)->fetch();
-// if(empty($row)){
-//     exit;
-// };
+<?php require __DIR__.'/../../__connect_db.php';
+
+define('WEB_ROOT', '/UPICK');
+session_start();
+
+$email = $_SESSION['loginUser'];
+$sql = "SELECT `mobile`, `address`, `birthday`, nickname FROM members WHERE email=?";
+$stmt = $pdo->prepare($sql);
+$stmt->execute([$email]);
+
+if($stmt->rowCount()){
+    $row = $stmt->fetch();
+    
+}
 ?>
 
 <!DOCTYPE html>
@@ -60,8 +67,7 @@
                     
                         <div class="memColumnWhite_HC">
                             <p>會員帳號</p>
-                            <input type="text" name="email" disabled placeholder="請輸入姓名" value="<?= $row['email'] ?>">
-                            <!-- <p class="memAccount_HC memAccountEmail_HC"></p> -->
+                            <input type="text" name="email" disabled placeholder="請輸入姓名" value="<?= $_SESSION['loginUser'] ?>">
                         </div>
                         <div class="memColumnWhite_HC">
                             <p>姓名</p>
@@ -102,11 +108,11 @@
 <?php include __DIR__ . '/../../parts/scripts.php' ?>
 <script>
 function EditUser() {
-    $.ajax({
-        type: "POST", //方法
-        url: "read-members-api.php", //表單接收url
-        dataType: "json",
-    });
+    // $.ajax({
+    //     type: "POST", //方法
+    //     url: "read-members-api.php", //表單接收url
+    //     dataType: "json",
+    // });
 
     $.ajax({
         type: "POST", //方法
