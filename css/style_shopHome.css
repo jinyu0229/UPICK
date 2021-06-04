@@ -501,9 +501,17 @@
             width: 100px;
         }
 
+        /*修改輪播牆圖片大小*/
+        .shpCaroImg_CL {
+            display: block;
+            width: 150px;
+            height: 150px;
+        }
+
         /*商品輪播牆單頁內容p文字格式-修改寬度*/
-        .shpHotItemCaro-CL p {
+        .shpCaroName_CL {
             width: 140px;
+            height: 75px;
             margin-left: 12px;
             font-size: 14px;
             line-height: 24px;
@@ -731,19 +739,24 @@
             height: 120px;
         }
 
+        .shpItem-CL img:hover {
+            box-shadow: -1px 1px 3px gray;
+        }
+
         /*設定零件區-文字金額資訊區總體margin-left*/
         .shpItemInfo-CL {
-            margin-left: 6px;
+            margin-left: 10px;
         }
 
         /*設定零件區-p標籤的間距*/
         .shpItem-CL p {
             line-height: 22px;
+            height: 85px;
         }
 
         /*設定零件區-heart, car, dollor的間距*/
         .shpItem-CL .shpHotCartInfo-CL {
-            margin-left: 10px;
+            margin-left: 8px;
             margin-top: -8px;
         }
         .shpItem-CL .shpHeart-CL {
@@ -860,6 +873,11 @@
         .siteBtn-CL2 {
             display: none;
         }
+
+      
+
+
+
 
 
 
