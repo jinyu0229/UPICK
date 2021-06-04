@@ -1,12 +1,81 @@
+<?php
+require __DIR__ . '/__connect_db.php';
+define('WEB_ROOT', '/UPICK');
+session_start();
+
+//若點擊navbar商場btn,則首頁動畫區消失
+$aniarea = isset($_GET['aniarea']) ? ($_GET['aniarea']) : 'block';
+$shparea = isset($_GET['shparea']) ? ($_GET['shparea']) : 'none';
+if ($shparea == 'block') {
+    $shpTopSpace = '120';
+}
+
+//熱銷商品sql query
+$hotsale1 = "SELECT * FROM 06ssd WHERE id BETWEEN 11 AND 14";
+$hsrow1 = $pdo->query($hotsale1)->fetchAll();
+$hotsale2 = "SELECT * FROM 01cpu WHERE id BETWEEN 6 AND 9";
+$hsrow2 = $pdo->query($hotsale2)->fetchAll();
+$hotsale3 = "SELECT * FROM 03vga WHERE id BETWEEN 15 AND 18";
+$hsrow3 = $pdo->query($hotsale3)->fetchAll();
+
+//零件區sql query
+$cpu1 = "SELECT * FROM 01cpu WHERE id BETWEEN 1 AND 4";
+$cpurow1 = $pdo->query($cpu1)->fetchAll();
+$cpu2 = "SELECT * FROM 01cpu WHERE id BETWEEN 5 AND 8";
+$cpurow2 = $pdo->query($cpu2)->fetchAll();
+
+$mb1 = "SELECT * FROM 02mb WHERE id BETWEEN 1 AND 4";
+$mbrow1 = $pdo->query($mb1)->fetchAll();
+$mb2 = "SELECT * FROM 02mb WHERE id BETWEEN 5 AND 8";
+$mbrow2 = $pdo->query($mb2)->fetchAll();
+
+$ram1 = "SELECT * FROM 04ram WHERE id BETWEEN 1 AND 4";
+$ramrow1 = $pdo->query($ram1)->fetchAll();
+$ram2 = "SELECT * FROM 04ram WHERE id BETWEEN 5 AND 8";
+$ramrow2 = $pdo->query($ram2)->fetchAll();
+
+$hdd1 = "SELECT * FROM 05hdd WHERE id BETWEEN 1 AND 4";
+$hddrow1 = $pdo->query($hdd1)->fetchAll();
+$hdd2 = "SELECT * FROM 05hdd WHERE id BETWEEN 5 AND 8";
+$hddrow2 = $pdo->query($hdd2)->fetchAll();
+
+$ssd1 = "SELECT * FROM 06ssd WHERE id BETWEEN 1 AND 4";
+$ssdrow1 = $pdo->query($ssd1)->fetchAll();
+$ssd2 = "SELECT * FROM 06ssd WHERE id BETWEEN 5 AND 8";
+$ssdrow2 = $pdo->query($ssd2)->fetchAll();
+
+$vga1 = "SELECT * FROM 03vga WHERE id BETWEEN 1 AND 4";
+$vgarow1 = $pdo->query($vga1)->fetchAll();
+$vga2 = "SELECT * FROM 03vga WHERE id BETWEEN 5 AND 8";
+$vgarow2 = $pdo->query($vga2)->fetchAll();
+
+$shell1 = "SELECT * FROM 07computercase WHERE id BETWEEN 1 AND 4";
+$shellrow1 = $pdo->query($shell1)->fetchAll();
+$shell2 = "SELECT * FROM 07computercase WHERE id BETWEEN 5 AND 8";
+$shellrow2 = $pdo->query($shell2)->fetchAll();
+
+$power1 = "SELECT * FROM 08powersupply WHERE id BETWEEN 1 AND 4";
+$powerrow1 = $pdo->query($power1)->fetchAll();
+$power2 = "SELECT * FROM 08powersupply WHERE id BETWEEN 5 AND 8";
+$powerrow2 = $pdo->query($power2)->fetchAll();
+
+$fan1 = "SELECT * FROM 12fan WHERE id BETWEEN 1 AND 4";
+$fanrow1 = $pdo->query($fan1)->fetchAll();
+$fan2 = "SELECT * FROM 12fan WHERE id BETWEEN 5 AND 8";
+$fanrow2 = $pdo->query($fan2)->fetchAll();
+
+$screen1 = "SELECT * FROM 09screen WHERE id BETWEEN 1 AND 4";
+$screenrow1 = $pdo->query($screen1)->fetchAll();
+$screen2 = "SELECT * FROM 09screen WHERE id BETWEEN 5 AND 8";
+$screenrow2 = $pdo->query($screen2)->fetchAll();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
-
-
-
 <head>
-    <!--資料庫連結-->
-    <?php include __DIR__ . '/__connect_db.php'; ?>
 
     <?php include __DIR__ . '../parts/html_head.php' ?>
     <!--固定元件:UMA小幫手style-->
@@ -101,7 +170,7 @@
         <!--撐高頂部的navbar區塊-->
         <div class="aniTopSpace"></div>
 
-        <div class="aniContainer-CL">
+        <div class="aniContainer-CL" style="display:<?= $aniarea ?>;">
             <!--UPICK外層-->
             <div class="aniUpickOut-CL">
                 <!--UPICK區塊-->
@@ -142,10 +211,10 @@
         </div>
 
         <!--商場區首頁-->
-        <div class="shpTop-CL">
+        <div class="shpTop-CL" style="display:<?= $shparea ?>;">
             <section id="shpTopSection_CL"></section>
             <!--商場頂部預留200px給navbar-->
-            <div class="shpTopSpace-CL"></div>
+            <div class="shpTopSpace-CL" style="height:<?= $shpTopSpace ?>px;"></div>
             <!--商場內容區-->
             <div class="container shpContainer-CL">
                 <!--頂部輪播牆-修改輪播牆寬度-->
@@ -167,13 +236,11 @@
                             <img src="images/topCaro_01.png" class="d-block w-100" alt="...">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button"
-                        data-bs-slide="prev">
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
                         <!--修改商品輪播牆上一頁之icon與顏色-->
                         <i class="fas fa-angle-left shpCaroBtnIcon-CL"></i>
                     </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button"
-                        data-bs-slide="next">
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
                         <!--修改商品輪播牆下一頁之icon與顏色-->
                         <i class="fas fa-angle-right shpCaroBtnIcon-CL"></i>
                     </a>
@@ -188,9 +255,7 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <i class="fas fa-map-marker-alt"></i>
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Library</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Data</li>
+                        <li class="breadcrumb-item active" aria-current="page"><a href="#">Home</a></li>
                     </ol>
                 </nav>
 
@@ -202,62 +267,64 @@
                         <h1>熱銷商品</h1>
                     </div>
                     <!--熱銷商品內容-商品輪播牆-->
-                    <div id="carouselExampleControls" class="carousel slide shpHotSaleContain-CL"
-                        data-bs-ride="carousel">
+                    <div id="carouselExampleControls" class="carousel slide shpHotSaleContain-CL" data-bs-ride="carousel">
                         <!--商品輪播牆內容-修改商品內容顯示區總高度-->
                         <div class="carousel-inner shpHotSaleInner-CL">
                             <!--商品輪播牆單頁內容-->
                             <div class="carousel-item active shpHotItemCaro-CL">
                                 <div class="row">
-                                    <div class="col-lg">
-                                        <a href="">
-                                            <img src="./images/item_01.png" alt="" class="shpCaroImg_CL">
-                                            <p class="shpCaroName_CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
+                                    <?php foreach ($hsrow1 as $r) { ?>
+                                        <div class="col-lg">
+                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=06ssd">
+                                                <img src="<?= WEB_ROOT ?>/images/product/06ssd/<?= $r['imgs'] ?>.jpg" alt="" class="shpCaroImg_CL">
+                                                <p class="shpCaroName_CL"><?= $r['name'] ?></p>
+                                            </a>
                                             <!--加入追蹤之愛心,購物車,金額-->
-                                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                                    class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                                    class="shpItemDollor-CL">8790</span></div>
-                                        </a>
-                                    </div>
-                                    <div class="col-lg">
-                                        <img src="./images/item_01.png" alt="">
-                                        <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                        <!--加入追蹤之愛心,購物車,金額-->
-                                        <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                                class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                                class="shpItemDollor-CL">8790</span></div>
-                                    </div>
-                                    <div class="col-lg">
-                                        <img src="./images/item_01.png" alt="">
-                                        <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                        <!--加入追蹤之愛心,購物車,金額-->
-                                        <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                                class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                                class="shpItemDollor-CL">8790</span></div>
-                                    </div>
-                                    <div class="col-lg">
-                                        <img src="./images/item_01.png" alt="">
-                                        <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                        <!--加入追蹤之愛心,購物車,金額-->
-                                        <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                                class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                                class="shpItemDollor-CL">8790</span></div>
-                                    </div>
+                                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                                        </div>
+                                    <?php } ?>
                                 </div>
                             </div>
 
-                            <div class="carousel-item">
+                            <div class="carousel-item shpHotItemCaro-CL">
+                                <div class="row">
+                                    <?php foreach ($hsrow2 as $r) { ?>
+                                        <div class="col-lg">
+                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=01cpu">
+                                                <img src="<?= WEB_ROOT ?>/images/product/01cpu/<?= $r['imgs'] ?>.jpg" alt="" class="shpCaroImg_CL">
+                                                <p class="shpCaroName_CL"><?= $r['name'] ?></p>
+                                            </a>
+                                            <!--加入追蹤之愛心,購物車,金額-->
+                                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
+                            </div>
+
+
+
+                            <div class="carousel-item shpHotItemCaro-CL">
+                                <div class="row">
+                                    <?php foreach ($hsrow3 as $r) { ?>
+                                        <div class="col-lg">
+                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=03vga">
+                                                <img src="<?= WEB_ROOT ?>/images/product/03vga/<?= $r['imgs'] ?>.jpg" alt="" class="shpCaroImg_CL">
+                                                <p class="shpCaroName_CL"><?= $r['name'] ?></p>
+                                            </a>
+                                            <!--加入追蹤之愛心,購物車,金額-->
+                                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                                        </div>
+                                    <?php } ?>
+                                </div>
 
                             </div>
 
                         </div>
-                        <a class="carousel-control-prev shpCaroBtn-CL" href="#carouselExampleControls" role="button"
-                            data-bs-slide="prev">
+                        <a class="carousel-control-prev shpCaroBtn-CL" href="#carouselExampleControls" role="button" data-bs-slide="prev">
                             <!--修改商品輪播牆上一頁之icon與顏色-->
                             <i class="fas fa-angle-left shpCaroBtnIcon-CL"></i>
                         </a>
-                        <a class="carousel-control-next shpCaroBtn-CL" href="#carouselExampleControls" role="button"
-                            data-bs-slide="next">
+                        <a class="carousel-control-next shpCaroBtn-CL" href="#carouselExampleControls" role="button" data-bs-slide="next">
                             <!--修改商品輪播牆下一頁之icon與顏色-->
                             <i class="fas fa-angle-right shpCaroBtnIcon-CL"></i>
                         </a>
@@ -265,906 +332,412 @@
                 </div>
 
 
-
-
                 <!--全站熱銷零組件圖片-->
                 <div class="shpHotItemImg-CL"><img src="./images/img_03.png" alt=""></div>
+
 
                 <!--CPU零件區-->
                 <section id="shpCpuSection_CL"></section>
                 <div class="shpItem-CL shpCpu-CL">
-                    <a href="/Upick/web/product/item_cpu.php">
-                        <div class="shpItemSkew-CL">
-                            <h3>中央處理器CPU</h3>
-                        </div>
-                    </a>
-
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img class="shpProductImg_CL" src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL"><?= $row1['name'] ?></p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL"><?= $row1['price'] ?></span></div>
-                            </div>
-                        </div>
-
+                    <div class="shpItemSkew-CL">
+                        <h3>中央處理器CPU</h3>
                     </div>
-
                     <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
+                        <?php foreach ($cpurow1 as $r) : ?>
+                            <div class="col">
+                                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=01cpu">
+                                    <img class="shpProductImg_CL" src="<?= WEB_ROOT ?>/images/product/01cpu/<?= $r['imgs'] ?>.jpg" alt="">
+                                    <div class="shpItemInfo-CL data-sid=" <?= $r['item'] & $r['id'] ?>">
+                                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                                </a>
+                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
                             </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
                     </div>
-                    <a href="/Upick/web/product/item_cpu.php"><span class="shpSeeMore-CL">看更多 <i
-                                class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+                <?php endforeach; ?>
                 </div>
-
-
-                <!--主機板零件區-->
-                <section id="shpBoardSection_CL"></section>
-                <div class="shpItem-CL shpBoard-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>主機板</h3>
-                        </div>
-                    </a>
-                    <div class="row">
+                <div class="row">
+                    <?php foreach ($cpurow2 as $r) : ?>
                         <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
+                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=01cpu">
+                                <img src="<?= WEB_ROOT ?>/images/product/01cpu/<?= $r['imgs'] ?>.jpg" alt="">
+                                <div class="shpItemInfo-CL">
+                                    <p><?= $r['name'] ?></p>
+                            </a>
+                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
                         </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
                 </div>
-
-
-                <!--記憶體RAM零件區-->
-                <section id="shpRamSection_CL"></section>
-                <div class="shpItem-CL shpRam-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>記憶體RAM</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-                <!--傳統硬碟HDD零件區-->
-                <section id="shpHddSection_CL"></section>
-                <div class="shpItem-CL shpHdd-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>傳統硬碟HDD</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-
-                <!--固態硬碟SDD零件區-->
-                <section id="shpSddSection_CL"></section>
-                <div class="shpItem-CL shpSdd-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>固態硬碟SDD</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-
-                <!--顯示卡零件區-->
-                <section id="shpVgaSection_CL"></section>
-                <div class="shpItem-CL shpVga-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>顯示卡</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-
-                <!--電腦機殼零件區-->
-                <section id="shpShellSection_CL"></section>
-                <div class="shpItem-CL shpShell-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>電腦機殼</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-
-                <!--電源供應器零件區-->
-                <section id="shpPowerSection_CL"></section>
-                <div class="shpItem-CL shpPower-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>電源供應器</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-
-                <!--散熱零件區-->
-                <section id="shpFanSection_CL"></section>
-                <div class="shpItem-CL shpFan-CL">
-                    <a href="">
-                        <div class=" shpItemSkew-CL">
-                            <h3>散熱零件</h3>
-                        </div>
-                    </a>
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-
-
-
-                <!--週邊零件區-->
-                <section id="shpAcceSection_CL"></section>
-                <div class="shpItem-CL shpAcce-CL">
-                    <a href="">
-                        <div class="shpItemSkew-CL">
-                            <h3>週邊零件</h3>
-                        </div>
-                    </a>
-
-                    <div class="row">
-                        <div class="col">
-                            <a href="">
-                                <img src="./images/item_01.png" alt=""></a>
-                            <div class="shpItemInfo-CL">
-                                <p class="shpItemInfoP-CL">Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <img src="./images/item_01.png" alt="">
-                            <div class="shpItemInfo-CL">
-                                <p>Corsair HX1200 80Plus白金牌電源供應器白金牌電源供應器</p>
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i
-                                        class="fas fa-shopping-cart shpShopCar-CL"></i> <span
-                                        class="shpItemDollor-CL">8790</span></div>
-                            </div>
-                        </div>
-                    </div>
-                    <a href=""><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i
-                                class="fas fa-angle-right"></i></span></a>
-                </div>
-                <!--區隔撐開頁尾的空間-->
-                <div class="shpFooterSpace-CL"></div>
-
+            <?php endforeach; ?>
             </div>
-            <!--頁尾-->
-            <?php include __DIR__ . '../parts/html_footer.php' ?>
+            <a href="/Upick/web/product/item_page.php?classid=01cpu"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
         </div>
+
+
+        <!--主機板零件區-->
+        <section id="shpBoardSection_CL"></section>
+        <div class="shpItem-CL shpBoard-CL">
+            <div class="shpItemSkew-CL">
+                <h3>主機板</h3>
+            </div>
+            <div class="row">
+                <?php foreach ($mbrow1 as $r) : ?>
+                    <div class="col">
+                        <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=02mb">
+                            <img src="<?= WEB_ROOT ?>/images/product/02mb/<?= $r['imgs'] ?>.jpg" alt="">
+                            <div class="shpItemInfo-CL">
+                                <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                        </a>
+                        <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                    </div>
+            </div>
+        <?php endforeach; ?>
+        </div>
+        <div class="row">
+            <?php foreach ($mbrow2 as $r) : ?>
+                <div class="col">
+                    <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=02mb">
+                        <img src="<?= WEB_ROOT ?>/images/product/02mb/<?= $r['imgs'] ?>.jpg" alt="">
+                        <div class="shpItemInfo-CL">
+                            <p><?= $r['name'] ?></p>
+                    </a>
+                    <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+    <a href="/Upick/web/product/item_page.php?classid=02mb"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
     </div>
 
 
+    <!--記憶體RAM零件區-->
+    <section id="shpRamSection_CL"></section>
+    <div class="shpItem-CL shpRam-CL">
+        <div class="shpItemSkew-CL">
+            <h3>記憶體RAM</h3>
+        </div>
+        <div class="row">
+            <?php foreach ($ramrow1 as $r) : ?>
+                <div class="col">
+                    <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=04ram">
+                        <img src="<?= WEB_ROOT ?>/images/product/04ram/<?= $r['imgs'] ?>.jpg" alt="">
+                        <div class="shpItemInfo-CL">
+                            <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                    </a>
+                    <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                </div>
+        </div>
+    <?php endforeach; ?>
+    </div>
+    <div class="row">
+        <?php foreach ($ramrow2 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=04ram">
+                    <img src="<?= WEB_ROOT ?>/images/product/04ram/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=04ram"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
 
-    <!--SCRIPT-->
-    <?php include __DIR__ . '../parts/scripts.php' ?>
-    <script>
+
+<!--傳統硬碟HDD零件區-->
+<section id="shpHddSection_CL"></section>
+<div class="shpItem-CL shpHdd-CL">
+    <div class="shpItemSkew-CL">
+        <h3>傳統硬碟HDD</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($hddrow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=05hdd">
+                    <img src="<?= WEB_ROOT ?>/images/product/05hdd/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($hddrow2 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=05hdd">
+                <img src="<?= WEB_ROOT ?>/images/product/05hdd/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=05hdd"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--固態硬碟SSD零件區-->
+<section id="shpSddSection_CL"></section>
+<div class="shpItem-CL shpSdd-CL">
+    <div class="shpItemSkew-CL">
+        <h3>固態硬碟SSD</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($ssdrow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=06ssd">
+                    <img src="<?= WEB_ROOT ?>/images/product/06ssd/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($ssdrow2 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=06ssd">
+                <img src="<?= WEB_ROOT ?>/images/product/06ssd/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=06ssd"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--顯示卡零件區-->
+<section id="shpVgaSection_CL"></section>
+<div class="shpItem-CL shpVga-CL">
+    <div class="shpItemSkew-CL">
+        <h3>顯示卡</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($vgarow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=03vga">
+                    <img src="<?= WEB_ROOT ?>/images/product/03vga/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($vgarow1 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=03vga">
+                <img src="<?= WEB_ROOT ?>/images/product/03vga/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+
+<a href="/UPICK/web/product/item_page.php?classid=03vga"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--電腦機殼零件區-->
+<section id="shpShellSection_CL"></section>
+<div class="shpItem-CL shpShell-CL">
+    <div class="shpItemSkew-CL">
+        <h3>電腦機殼</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($shellrow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=07computercase">
+                    <img src="<?= WEB_ROOT ?>/images/product/07computercase/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($shellrow2 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=07computercase">
+                <img src="<?= WEB_ROOT ?>/images/product/07computercase/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=07computercase"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--電源供應器零件區-->
+<section id="shpPowerSection_CL"></section>
+<div class="shpItem-CL shpPower-CL">
+    <div class="shpItemSkew-CL">
+        <h3>電源供應器</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($powerrow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=08powersupply">
+                    <img src="<?= WEB_ROOT ?>/images/product/08powersupply/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($powerrow2 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=08powersupply">
+                <img src="<?= WEB_ROOT ?>/images/product/08powersupply/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=08powersupply"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--散熱零件區-->
+<section id="shpFanSection_CL"></section>
+<div class="shpItem-CL shpFan-CL">
+    <div class=" shpItemSkew-CL">
+        <h3>散熱零件</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($fanrow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=12fan">
+                    <img src="<?= WEB_ROOT ?>/images/product/12fan/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($fanrow2 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=12fan">
+                <img src="<?= WEB_ROOT ?>/images/product/12fan/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=12fan"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--週邊零件區-->
+<section id="shpAcceSection_CL"></section>
+<div class="shpItem-CL shpAcce-CL">
+    <div class="shpItemSkew-CL">
+        <h3>週邊零件</h3>
+    </div>
+    <div class="row">
+        <?php foreach ($screenrow1 as $r) : ?>
+            <div class="col">
+                <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=09screen">
+                    <img src="<?= WEB_ROOT ?>/images/product/09screen/<?= $r['imgs'] ?>.jpg" alt="">
+                    <div class="shpItemInfo-CL">
+                        <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
+                </a>
+                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+            </div>
+    </div>
+<?php endforeach; ?>
+</div>
+<div class="row">
+    <?php foreach ($screenrow2 as $r) : ?>
+        <div class="col">
+            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=09screen">
+                <img src="<?= WEB_ROOT ?>/images/product/09screen/<?= $r['imgs'] ?>.jpg" alt="">
+                <div class="shpItemInfo-CL">
+                    <p><?= $r['name'] ?></p>
+            </a>
+            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+        </div>
+</div>
+<?php endforeach; ?>
+</div>
+<a href="/UPICK/web/product/item_page.php?classid=09screen"><span class="shpSeeMore-CL">看更多 <i class="fas fa-angle-right"></i><i class="fas fa-angle-right"></i></span></a>
+</div>
+
+
+
+<!--區隔撐開頁尾的空間-->
+<div class="shpFooterSpace-CL"></div>
+
+</div>
+<!--頁尾-->
+<?php include __DIR__ . '../parts/html_footer.php' ?>
+</div>
+</div>
+
+
+
+<!--SCRIPT-->
+<?php include __DIR__ . '../parts/scripts.php' ?>
+<script>
+    //加入購物車後端JS
+    const addToCartBtn = $('.shpShopCar-CL');
+    addToCartBtn.click(function() {
+        const card = $(this).closest('.shpItemInfo-CL');
+        const pid = card.attr('data-sid');
+        const qty = 1;
+        // console.log({pid, qty}, card.find('.card-title').text());
+        $.get('cart-api.php', {
+            action: 'add',
+            pid,
+            qty
+        }, function(data) {
+            console.log(data);
+            showCartCount(data); // 更新選單上數量的提示
+        }, 'json');
+    })
+
+
+
+    //前端頁面效果JQ
     $('.shpUpHot-CL').css('display', 'none');
     $('.shpWpHot-CL').css('display', 'none');
 
@@ -1180,14 +753,14 @@
         //WEB版-各區域在初始顯示方式
         if ($(window).width() >= 1200) {
             //商場不出現
-            $('.shpTop-CL').css('display', 'none');
+            //$('.shpTop-CL').css('display', 'none');
             //頁尾不出現
             $('.shpFooterOut-CL').css('display', 'none');
             $('.shpFooterColor-CL').css('display', 'none');
             //scroll不出現
             $('.scrollBar-CL').css('display', 'none');
             //搜尋BAR不出現
-            $('.navSearch-CL').css('display', 'none');
+            //$('.navSearch-CL').css('display', 'none');
             //UMA小幫手不出現
             $('.umaHelper-CL').css('display', 'none');
 
@@ -1453,7 +1026,7 @@
             }
         }
     })
-    </script>
+</script>
 
 
 
