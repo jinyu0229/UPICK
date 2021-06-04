@@ -185,6 +185,10 @@
             display: none;
         }
 
+        .memWrongPass_HC {
+            display: none;
+        }
+
         /*此div撐開footer上方的留白空間*/
         .shpFooterSpace-CL {
             height: 100px;
