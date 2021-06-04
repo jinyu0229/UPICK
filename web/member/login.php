@@ -1,3 +1,10 @@
+<?php require __DIR__.'/../../__connect_db.php';
+
+define('WEB_ROOT', '/UPICK');
+session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -620,6 +627,7 @@ function RegisterUser() {
             console.log("OK")                
             if (data.success == true) {
                 alert("註冊成功！歡迎您加入UPICK！請重新登入會員。");
+                location.href = 'login.php';
             } else if (data.success == false) {
                 hasReg.style.display = "block";
             }

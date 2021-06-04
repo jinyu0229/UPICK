@@ -4,7 +4,7 @@ define('WEB_ROOT', '/UPICK');
 session_start();
 
 $email = $_SESSION['loginUser'];
-$sql = "SELECT `mobile`, `address`, `birthday`, nickname FROM members WHERE email=?";
+$sql = "SELECT `mobile`, `phone`, `address`, `birthday`, nickname FROM members WHERE email=?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 
@@ -108,11 +108,11 @@ if($stmt->rowCount()){
 <?php include __DIR__ . '/../../parts/scripts.php' ?>
 <script>
 function EditUser() {
-    // $.ajax({
-    //     type: "POST", //方法
-    //     url: "read-members-api.php", //表單接收url
-    //     dataType: "json",
-    // });
+    $.ajax({
+        type: "POST", //方法
+        url: "read-members-api.php", //表單接收url
+        dataType: "json",
+    });
 
     $.ajax({
         type: "POST", //方法

@@ -27,12 +27,13 @@ $output = [
 // }
 
 
-$sql = "UPDATE `members` SET `mobile`=?,`address`=?, `birthday`=?, `nickname`=? WHERE `email`=?";
+$sql = "UPDATE `members` SET `mobile`=?,`phone`=?,`address`=?, `birthday`=?, `nickname`=? WHERE `email`=?";
 
 $stmt = $pdo->prepare($sql);
 
 $stmt->execute([
     $_POST['mobile'],
+    $_POST['phone'],
     $_POST['address'],
     $_POST['birthday'],
     $_POST['nickname'],
