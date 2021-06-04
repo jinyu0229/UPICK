@@ -63,8 +63,7 @@ if($stmt->rowCount()){
                     </div>
                 </div>
                 <div class="memEditArea_HC">                    
-                    <form class="memForm_HC" id="form1" onsubmit="return false" action="##" method="post">
-                    
+                    <form class="memForm_HC" id="form1" onsubmit="return false" action="##" method="post">                    
                         <div class="memColumnWhite_HC">
                             <p>會員帳號</p>
                             <input type="text" name="email" disabled placeholder="請輸入姓名" value="<?= $_SESSION['loginUser'] ?>">
