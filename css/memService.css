@@ -158,6 +158,10 @@
             display: none;
         }
 
+        .navSearch-CL{
+            display: none;
+        }
+
         /* 手機板 */
         @media screen and (max-width: 375px) {
             .container {

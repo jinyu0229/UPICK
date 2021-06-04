@@ -327,6 +327,10 @@ p {
     color: #383E44;
 }
 
+.navSearch-CL{
+    display: none;
+}
+
 /* 手機板 */
 @media screen and (max-width: 375px) {
     .container {

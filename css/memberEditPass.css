@@ -116,6 +116,7 @@
         .memColumnWhite_HC>p {
             font-size: 14px;
             font-weight: 700;
+            margin-bottom: 0;
         }
 
         .memColumnWhite_HC>input {
@@ -192,6 +193,10 @@
 
         .shpFooterOut-CL{
             width: 100%;
+        }
+
+        .navSearch-CL{
+            display: none;
         }
 
         /* 手機板 */
