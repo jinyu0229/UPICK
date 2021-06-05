@@ -24,6 +24,7 @@ if($stmt->rowCount()){
     <title>會員資料</title>
     <!--檔頭外掛-->
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
+    <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
     <!-- memberEdit.css -->
     <link rel="stylesheet" href="/Upick/css/memberEdit.css">
 </head>

@@ -24,6 +24,7 @@ if($stmt->rowCount()){
     <title>修改密碼</title>
     <!--檔頭外掛-->
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
+    <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
     <!-- memberEditPass.css -->
     <link rel="stylesheet" href="/Upick/css/memberEditPass.css">
 </head>
@@ -52,7 +53,7 @@ if($stmt->rowCount()){
             <div class="memRightCon">
                 <div class="memberTitle_HC">
                     <div class="memBackBtn_HC">
-                        <a href="./memberCentre.html">
+                        <a href="/Upick/web/member/memberCentre.php">
                             <i class="fas fa-angle-left"></i>
                         </a>
                     </div>
