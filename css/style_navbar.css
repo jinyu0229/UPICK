@@ -1,4 +1,4 @@
-    .navbarAll {
+.navbarAll {
     position: fixed;
     z-index: 999;
 
@@ -157,8 +157,10 @@
         background-color: #7FE0DC;
     }
 
-    
 
-  
-
-
+    /*手機版*/
+    @media (max-width:419px) and (min-width: 300px) {
+        .navbarAll {
+            display: none;
+        }
+    }
