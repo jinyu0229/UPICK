@@ -331,6 +331,8 @@ p {
     display: none;
 }
 
+
+
 /* 手機板 */
 @media screen and (max-width: 375px) {
     .container {
@@ -343,11 +345,16 @@ p {
         display: none;
     }
 
+    .navTwo_ZY{
+        display: none;
+    }
+
     /* Tab分頁 */
     #memLoginTab_HC {
         width: 300px;
         height: 400px;
         margin: 0 auto;
+        padding-top: 150px;
         /* margin-top: 150px; */
     }
 
