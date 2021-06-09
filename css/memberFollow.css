@@ -94,6 +94,17 @@
             transform: skewX(-15deg);
         }
 
+        /* 尚無追蹤樣式 */
+        .memNoFollow_HC{
+            width: 100%;
+            height: 600px;
+            padding-top: 29%;
+            text-align: center;
+            background-color: #FFF;
+            border-radius: 4px;
+            box-shadow: 3px 3px 10px #E4E8EE;
+        }
+
         /* 表格樣式 */
         table {
             border-bottom: 2px solid #383E44;
@@ -301,6 +312,12 @@
                 display: none;
             }
 
+            /* 尚無追蹤樣式 */
+            .memNoFollow_HC{
+                padding-top: 32%;
+                height: 300px;
+            }
+
             /* 追蹤清單樣式 */
             .memMobileFollowArea_HC {
                 display: block;
@@ -314,6 +331,7 @@
                 border-radius: 4px;
                 box-shadow: 3px 3px 10px #E4E8EE;
                 align-items: center;
+                margin-bottom: 10px;
             }
 
             .memMbFollowCardArea_HC>img {
@@ -330,6 +348,7 @@
             }
 
             .memMbFollowCardDown_HC {
+                width: 220px;
                 display: flex;
                 justify-content: space-between;
             }
