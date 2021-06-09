@@ -137,29 +137,29 @@ if($stmt->rowCount()){
 <?php include __DIR__ . '/../../parts/scripts.php' ?>
 
 <script>
-$(document).ready(function (){
-    GetMemberOrder();
-});
+// $(document).ready(function (){
+//     GetMemberOrder();
+// });
 
-function GetMemberOrder(){
-    $.ajax({
-        type: "POST", //方法
-        url: "read-members-api.php", //表單接收url
-        dataType: "json",
-    });
+// function GetMemberOrder(){
+//     $.ajax({
+//         type: "POST", //方法
+//         url: "read-members-api.php", //表單接收url
+//         dataType: "json",
+//     });
 
-    $.ajax({
-        type: POST,
-        url: "order-api.php",
-        dataType: "json",
-        success:function(data){
-            console.log("OK");
-        },
-        error: function(data) {
-            console.log("NOK");
-        }
-    });
-}
+//     $.ajax({
+//         type: POST,
+//         url: "order-api.php",
+//         dataType: "json",
+//         success:function(data){
+//             console.log("OK");
+//         },
+//         error: function(data) {
+//             console.log("NOK");
+//         }
+//     });
+// }
 
 //網頁版頁碼focus顏色
 $('.wWhitePGnumber').click(function() {
