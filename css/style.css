@@ -245,6 +245,8 @@
         .wWhitePgArea {
             display: flex;
             list-style-type: none;
+            margin: 0 auto;
+            width: 320px;
         }
 
         .wWhitePgItem {
@@ -263,6 +265,10 @@
             font-size: 20px;
             text-decoration: none;
             color: #383E44;
+        }
+
+        .wWhitePgLink:hover{
+            color: #9AA3AC;
         }
 
         .wWhitePgJump {
@@ -320,6 +326,10 @@
             color: #383E44;
             text-align: center;
             margin-left: -8px;
+        }
+
+        .wWhitePgColor {
+            background-color: #7FE0DC;
         }
 
         /*深色WEB版輸入框元件*/
