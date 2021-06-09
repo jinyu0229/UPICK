@@ -10,21 +10,22 @@
         </div>
         <!-- 這裡I標籤請塞入網址 -->
         <div class="navShopCart_ZY" onclick="location.href=
-        '#這邊放購物車網址';">
-            <i class="fas fa-shopping-cart"></i>
+        '/Upick/web/shopcar/shopcart_origin.php';">
+            <i class="fas fa-shopping-cart"><span class="badge badge-pill badge-danger cart-count">0</span></i>
+
         </div>
-        <?php if(isset($_SESSION['loginUser'])): ?>
-        <!-- 已登入 -->
-        <div class="navmember_ZY" onclick="location.href=
+        <?php if (isset($_SESSION['loginUser'])) : ?>
+            <!-- 已登入 -->
+            <div class="navmember_ZY" onclick="location.href=
         '/Upick/web/member/memberCentre.php';">
-            <i class="fas fa-user"></i>
-        </div>
-        <?php else: ?>
-        <!-- 未登入 -->
-        <div class="navmember_ZY" onclick="location.href=
+                <i class="fas fa-user"></i>
+            </div>
+        <?php else : ?>
+            <!-- 未登入 -->
+            <div class="navmember_ZY" onclick="location.href=
         '/Upick/web/member/login.php';">
-            <i class="fas fa-user"></i>
-        </div>
+                <i class="fas fa-user"></i>
+            </div>
         <?php endif; ?>
     </div>
 
@@ -46,12 +47,12 @@
             </div> -->
 
         </div>
-        <?php if(isset($_SESSION['loginUser'])): ?>
-        <!-- 已登入 -->
+        <?php if (isset($_SESSION['loginUser'])) : ?>
+            <!-- 已登入 -->
             <div class="navbarLinkLi_ZY">
-            <a class="" href="#">
-                首頁</a>
-            <div class="navUnderscore_ZY"></div>
+                <a class="" href="#">
+                    首頁</a>
+                <div class="navUnderscore_ZY"></div>
             </div>
             <div class="navbarLinkLi_ZY">
                 <a class="" href="/Upick/shopHome.php">商場</a>
@@ -73,13 +74,13 @@
                 <a class="" href="logout.php">登出</a>
                 <div class="navUnderscore_ZY"></div>
             </div>
-            
-        <?php else: ?>
-        <!-- 未登入 -->
+
+        <?php else : ?>
+            <!-- 未登入 -->
             <div class="navbarLinkLi_ZY">
-            <a class="" href="#">
-                首頁</a>
-            <div class="navUnderscore_ZY"></div>
+                <a class="" href="#">
+                    首頁</a>
+                <div class="navUnderscore_ZY"></div>
             </div>
             <div class="navbarLinkLi_ZY">
                 <a class="" href="/Upick/shopHome.php">商場</a>
@@ -101,8 +102,8 @@
                 <a class="" href="/Upick/web/member/login.php">登入/註冊</a>
                 <div class="navUnderscore_ZY"></div>
             </div>
-        <?php endif; ?>       
-        
+        <?php endif; ?>
+
     </div>
 </nav>
 
@@ -115,7 +116,6 @@
                 <li class="navBreadCrumbItem_ZY">home</li>
                 <li class="navBreadCrumbItem_ZY">Library</li>
                 <li class="navBreadCrumbItem_ZY">Data</li>
-
             </ol> -->
         </div>
         <div class="navDownBar_ZY">
