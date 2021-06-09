@@ -30,7 +30,7 @@
 
         .shpTop-CL {
             width: 100vw;
-            background:#ffffff;
+            background:#F5F6F8;
             margin: 0 auto 0 auto;
         }
 
@@ -65,6 +65,12 @@
         /*修改最上方頁首輪播牆上下頁按鈕顏色*/
         .shpCarouselOut-CL .shpCaroBtnIcon-CL {
             color: #ffffff;
+            opacity: 1;
+        }
+
+        /* 修改最上方頁首輪播牆上下頁按鈕間距 */
+        .carousel-control-next, .carousel-control-prev {
+            width: 5% !important;
             opacity: 1;
         }
 
@@ -118,6 +124,15 @@
             margin-right: 12px;
         }
 
+        .breadcrumb-item>a{
+            color: #4AC8C2;
+        }
+
+        .breadcrumb-item>a:hover{
+            color: #383E44;
+            text-decoration: underline;
+        }
+
 
         /*熱銷商品區*/
         .shpHotSale-CL {
@@ -162,10 +177,13 @@
             transform: translateX(-50%) skewX(-20deg);
         }
 
-        /*商品輪播牆*/
         .shpHotSaleContain-CL {
             width: 1200px;
-            margin-top: 20px;
+            margin-top: 5px;
+            background-color: #FFF;
+            border-radius: 4px;
+            box-shadow: 3px 3px 10px #E4E8EE;
+            padding: 10px;
         }
 
         /*商品輪播牆內容-修改商品內容顯示區總高度*/
@@ -256,13 +274,17 @@
 
         .itemFilter-CL .table {
             border-bottom: 1px solid #D2D8E2;
+            margin-bottom: 0;
         }
 
         /*設定篩選項目移除列*/
         .itemFilterClear-CL {
             display: flex;
-            height: 50px;
-            line-height: 50px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #383E44;
+            
+            /* border-bottom: 1px solid #9AA3AC; */
         }
         /*設定篩選項目移除列-span*/
         .itemFilterClear-CL span {
@@ -270,25 +292,66 @@
             margin-left: 50%;
             transform: translateX(-50%);
             font-weight: 700;
-            color: #374052;
+            color: #FFF;
         }
         
+        /*修改欄位高度*/
+        .itemFilter-CL .table tr {
+            height: 40px;
+            border-bottom: 1px solid #9AA3AC;
+        }
+
         /*設定篩選項目table裡第一欄顏色,寬度*/
         .itemFilter-CL .table th {
             background: #EDF0F3;
             width: 120px;
             text-align: center;
-            line-height: 50px;
+            line-height: 40px;
+            padding: 0 20px;
+            border-top: none;
+            font-weight: 700;
         }
+        
         /*設定篩選項目table裡篩選label寬度*/
         .itemFilter-CL .table td {
             display: flex;
             flex-wrap: wrap;
+            align-items: center;
+            /* height: 40px; */
+            padding: 0 20px;
         }
+
+        .table td, .table th{
+            border-top: none;
+        }
+
+        td > div{
+            height: 40px;
+        }
+
+        td > div > a {
+            display: block;
+            height: 27px;
+            padding: 0 20px;
+            margin-top: 6.5px;
+            border-radius: 25px;
+            color: #383E44;
+        }
+
+        td > div > a:hover {
+            margin-top: 6.5px;
+            background-color: #7FE0DC;
+            color: #383E44;
+        }
+
+        td > div > a > label{
+            cursor: pointer;
+        }
+
         /*設定篩選項目table裡篩選label間距*/
         .itemFilter-CL .table td div {
-            margin-right: 60px;
-            line-height: 50px;
+            margin-right: 10px;
+
         }   
 
         /*設定篩選區下方品牌圖*/
@@ -337,16 +400,25 @@
             height: 40px;
             border-radius: 20px;
             margin-top: 40px;
-            margin-left: 800px;
+            margin-left: 840px;
             display: flex;
         }
 
         .itemSort-CL button {
-            width: 100px;
-            height: 40px;
+            width: 90px;
+            height: 35px;
             text-align: center;
             border: 1px solid #D2D8E2;
             cursor: pointer;
+            font-size: 14px;
+            color: #383E44;
+            background-color: #E4E8EE;
+        }
+
+        .itemSort-CL button:hover{
+            background-color: #374052;
+            color: #FFF;
+            border: 1px solid #374052;
         }
 
         .itemSort-CL button:nth-child(1) {
@@ -354,9 +426,10 @@
         }
         .itemCount-CL {
             border-radius: 0 20px 20px 0;
-            background: #374052;
-            color: #ffffff;
+            background: #374052 !important;
+            color: #ffffff !important;
             position: relative;
+            border: 1px solid #374052 !important;
         } 
         .itemCount-CL::before {
             position: absolute;
@@ -373,9 +446,9 @@
             display: flex;
             color: #374052;
             font-weight: 700;
-            font-size: 20px;
+            font-size: 16px;
             justify-content: flex-end;
-            margin-top: 20px;
+            margin-top: 0;
         }
         .itemSortOption-CL span {
             display: block;
@@ -385,17 +458,26 @@
         /*零件區*/
         .shpItem-CL {
             width: 100%;
-            border: 1px solid #616161;
-            margin-top: 30px;
-            border-radius: 8px;
+            background-color: #FFF;
+            box-shadow: 3px 3px 10px #E4E8EE;
+            padding: 20px 0;
+            margin-top: 20px;
+            border-radius: 4px;
         }
 
         .shpItem-CL .row {
-            margin: 10px auto 10px auto;
+            margin: 10px 20px 10px 40px;
         }
 
         .shpItem-CL .col-xl {
             margin: 30px 50px 15px 50px;
+            border-radius: 4px;
+            padding: 10px;
+            flex-grow: 0;
+        }
+
+        .shpItem-CL .col-xl:hover{
+            background-color: #F5F6F8;
         }
 
         .shpItem-CL img {
@@ -547,17 +629,23 @@
             }
             /*輪播牆寬高調整*/
             .shpCarouselOut-CL .carousel-indicators {
-                width: 375px;
+                width: 355px;
                 height: 150px;
                 overflow: hidden;
             }
+
+            .carousel-indicators{
+                margin: 0 !important;
+                height: 25px !important;
+            }
+
             .shpCarousel-CL {
                 width: 100%;
                 height: 100%;
             }
             /*輪播牆圖片調整*/
             .carousel-item {
-                width: 375px;
+                width: 355px;
                 height: 150px;
             }
             .carousel-item img {
@@ -570,12 +658,13 @@
                 left: 2vw;
             }
             .carousel-control-next {
-                left: 78vw;
+                left: 88vw;
             }
             /*面包屑位置調整-上移*/
             .breadcrumb {
                 margin-top: -80px;
             }
+            
             /*面包屑下標題區*/
             .shpHotTitle-CL {
                 width: 320px;
@@ -652,7 +741,7 @@
                 color: #bebebe;
                 margin-left: 10px;
             }
-            .itemFilterPhone-CL li {
+            .itemFilterPhone-CL div {
                 width: 100%;
                 padding-left: 10%;
                 border-top: 1px solid #838485;
@@ -671,18 +760,20 @@
                 margin-top: 20px;
             }
             /*排序方式*/
-        .itemSortOption-CL {
-            justify-content: flex-start;
-            margin-top: 20px;
-        }
+           .itemSortOption-CL {
+                justify-content: flex-start;
+                margin-top: 20px;
+            }
             /*商品展示區*/
-            .shpCpu-CL {
+            .shpItem-CL {
                 width: 355px;
                 border: none;
             }
+            .shpItem-CL .row {
+                margin: 10px auto 10px auto;
+            }
             .shpItem-CL .col-6 {
                 margin: 0;
-
             }  
             .shpItem-CL .col-6 img {
                 margin: 50px auto 10px auto;
@@ -717,7 +808,7 @@
                 width: 50px;
                 height: 50px;
                 border-radius: 25px;
-                z-index: 999;
+                z-index: 800;
                 background: #374052;
                 border: 1px solid #ffffff;
                 position: fixed;
