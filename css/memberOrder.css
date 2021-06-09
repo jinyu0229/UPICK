@@ -113,17 +113,17 @@
 
         #memWebTable_HC>thead>tr>th {
             width: 110px;
-            height: 40px;
+            height: 45px;
             color: #FFF;
             font-size: 16px;
             font-weight: 700;
-            line-height: 40px;
+            line-height: 45px;
             background-color: #383E44;
             text-align: center;
         }
 
         #memWebTable_HC>tbody>tr {
-            height: 50px;
+            height: 45px;
             border-bottom: 1px solid #E4E8EE;
             background-color: #FFF;
         }
@@ -135,15 +135,18 @@
         #memWebTable_HC>tbody>tr>td {
             text-align: center;
             font-size: 14px;
-            line-height: 50px;
+            line-height: 45px;
         }
 
         #memWebTable_HC>tbody>tr>td>p {
-            line-height: normal;
+            height: 45px;
+            line-height: 45px;
             color: #383E44;
+            margin-bottom: 0;
         }
 
         #memWebTable_HC>tbody>tr>td>a {
+            display: block;
             color: #383E44;
             font-size: 16px;
             text-decoration: underline;
