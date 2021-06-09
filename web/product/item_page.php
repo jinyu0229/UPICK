@@ -8,6 +8,7 @@ $tableid = isset($_GET['classid']) ? ($_GET['classid']) : '';
 
 $optionkey = isset($_GET['optionkey']) ? ($_GET['optionkey']) : null;
 $optionvalue = isset($_GET['optionvalue']) ? ($_GET['optionvalue']) : null;
+$optionvalue2 = isset($_GET['optionvalue']) ? ($_GET['optionvalue']) : null;
 if (!empty($optionkey) && !empty($optionvalue)) {
     $optiontext = "AND $optionkey = '$optionvalue'";
     $optionforpg = "optionkey=$optionkey&optionvalue=$optionvalue&";
@@ -238,6 +239,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
 <body>
     <?php include __DIR__ . '/../../parts/html_navbar.php' ?>
+    <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
     <!--固定元件:UMA小幫手html-->
     <?php include __DIR__ . '/../../parts/html_fixed_element.php' ?>
 
@@ -266,7 +268,6 @@ $rows = $pdo->query($p_sql)->fetchAll();
             <div class="shpTopSpace-CL"></div>
             <!--商場內容區-->
             <div class="container shpContainer-CL">
-
                 <!--頂部輪播牆-修改輪播牆寬度-->
                 <div id="carouselExampleIndicators" class="carousel slide shpCarouselOut-CL" data-bs-ride="carousel">
                     <ol class="carousel-indicators">
@@ -277,13 +278,13 @@ $rows = $pdo->query($p_sql)->fetchAll();
                     <!--修改輪播牆內容高度-->
                     <div class="carousel-inner shpCarousel-CL">
                         <div class="carousel-item active">
-                            <img src="/Upick/images/topCaro_01.png" class="d-block w-100" alt="...">
+                            <img src="/Upick/images/topCaro_01.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="/Upick/images/topCaro_01.png" class="d-block w-100" alt="...">
+                            <img src="/Upick/images/topCaro_02.jpg" class="d-block w-100" alt="...">
                         </div>
                         <div class="carousel-item">
-                            <img src="/Upick/images/topCaro_01.png" class="d-block w-100" alt="...">
+                            <img src="/Upick/images/topCaro_03.jpg" class="d-block w-100" alt="...">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -326,12 +327,12 @@ $rows = $pdo->query($p_sql)->fetchAll();
                                 <div class="row">
                                     <?php foreach ($hotsalerow1 as $r) { ?>
                                         <div class="col">
-                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=<?= $tableid ?>">
+                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=<?= $tableid ?>" data-sid="<?= $r['sid'] ?>" data-tbid="<?= $tableid ?>">
                                                 <img class="itemShopCaroImg_CL" src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
                                                 <p class="itemShopCaroName_CL"><?= $r['name'] ?></p>
                                             </a>
                                             <!--加入追蹤之愛心,購物車,金額-->
-                                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL itemShopCaroDollor_CL"><?= $r['price'] ?></span></div>
+                                            <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL" value="1"></i> <span class="shpItemDollor-CL itemShopCaroDollor_CL"><?= $r['price'] ?></span></div>
 
                                         </div>
                                     <?php } ?>
@@ -342,7 +343,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
                                 <div class="row">
                                     <?php foreach ($hotsalerow2 as $r) { ?>
                                         <div class="col">
-                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=<?= $tableid ?>">
+                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=<?= $tableid ?>" data-sid="<?= $r['sid'] ?>" data-tbid="<?= $tableid ?>">
                                                 <img class="itemShopCaroImg_CL" src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
                                                 <p class="itemShopCaroName_CL"><?= $r['name'] ?></p>
                                             </a>
@@ -358,7 +359,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
                                 <div class="row">
                                     <?php foreach ($hotsalerow3 as $r) { ?>
                                         <div class="col">
-                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=<?= $tableid ?>">
+                                            <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=<?= $tableid ?>" data-sid="<?= $r['sid'] ?>" data-tbid="<?= $tableid ?>">
                                                 <img class="itemShopCaroImg_CL" src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
                                                 <p class="itemShopCaroName_CL"><?= $r['name'] ?></p>
                                             </a>
@@ -418,18 +419,18 @@ $rows = $pdo->query($p_sql)->fetchAll();
                 <!--手機版-零件篩選-->
                 <div class="itemFilterPhone-CL">
                     <h4>請選擇商品篩選條件</h3>
-                        <span>您所選擇的關鍵字為：<?= $optionvalue ?></span>
+                        <span>您所選擇的關鍵字為：<?= $optionvalue2 ?></span>
                         <?php for ($i = 0; $i < $selecount; $i++) { ?>
                             <ul><?= $selector[$i]['name'] ?><i class="fas  fa-chevron-up"></i>
                                 <?php foreach ($option1data[$i] as $key2 => $value2) { ?>
                                     <?php
                                     foreach ($value2 as $optionkey => $optionvalue) { ?>
-
-                                        <li>
+                                        <div>
                                             <a href="item_page.php?classid=<?= $tableid ?>&optionkey=<?= $optionkey ?>&optionvalue=<?= $optionvalue ?>">
                                                 <label class="form-check-label" for="inlineCheckbox<?= $k ?>" data-key="<?= $optionkey ?>"><?= $optionvalue ?></label>
                                             </a>
-                                        </li>
+                                        </div>
+
 
                                     <?php } ?>
                                 <?php } ?>
@@ -458,18 +459,18 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
                 <!--商品展示區-->
                 <section id="shpCpuSection_CL"></section>
-                <div class="shpItem-CL shpCpu-CL">
+                <div class="shpItem-CL">
 
                     <div class="row">
                         <?php foreach ($rows as $r) : ?>
+                            <div class="col-xl col-6">
 
-                            <div class="col-xl col-6 mytest">
-                                <a href="dtl_page.php?classid=<?= $tableid ?>&pid=<?= $r['sid'] ?>" data-sid="<?= $r['sid'] ?>">
+                                <a href="dtl_page.php?classid=<?= $tableid ?>&pid=<?= $r['sid'] ?>" data-sid="<?= $r['sid'] ?>" data-tbid="<?= $tableid ?>">
                                     <img class="itemShowImg_CL" src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
                                     <p class="itemShowName_CL"><?= $r['name'] ?></p>
                                 </a>
                                 <!--加入追蹤之愛心,購物車,金額-->
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL" value="1"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL" value="1"></i><i class="fas fa-shopping-cart shpShopCar-CL" value="1"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
 
                             </div>
                         <?php endforeach; ?>
@@ -521,6 +522,9 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
     <!--SCRIPT-->
     <?php include __DIR__ . '/../../parts/scripts.php' ?>
+    <?php include __DIR__ . '/../../web/shopcar/cart-script.php' ?>
+    <?php include __DIR__ . '/../../web/member/follow-script.php' ?>
+
     <script>
         //開啟商品細節頁
         const openDtlPgBtn = $('.itemShowImg_CL');
@@ -528,7 +532,6 @@ $rows = $pdo->query($p_sql)->fetchAll();
             const card = $(this).closest('a');
             const cardid = card.attr('data-sid');
             console.log('cardid is ', cardid);
-
             $.get('dtl_api.php', {
                 action: 'list',
                 cardid
@@ -668,13 +671,46 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
 
 
+        //加入購物車
+        const addToCartBtn = $('.shpShopCar-CL');
+        addToCartBtn.click(function() {
+            const card = $(this).parent().prev('a');
+            const sid = card.attr('data-sid');
+            const classid = card.attr('data-tbid');
+            const qty = 1;
+            $.get('/Upick/web/shopcar/cart-api.php', {
+                action: 'add',
+                sid,
+                classid,
+                qty
+            }, function(data) {
+                console.log(data);
+                showCartCount(data); // 更新選單上數量的提示
+            }, 'json');
+        })
 
+        //加入追蹤
+        const addToFollowtBtn = $('.shpHeart-CL');
+        addToFollowtBtn.click(function() {
+            const card = $(this).parent().prev('a');
+            const sid = card.attr('data-sid');
+            const classid = card.attr('data-tbid');
+            const qty = 1;
+            $.get('/Upick/web/member/follow-api.php', {
+                action: 'add',
+                sid,
+                classid,
+                qty
+            }, function(data) {
+                console.log(data);
+            }, 'json');
+        })
 
         //手機版-篩選功能
         $('.fa-chevron-up').toggle();
         $('.itemFilterPhone-CL ul').click(function() {
             $(this).children('i.fa-chevron-up').toggle();
-            $(this).children('li').toggle(function() {
+            $(this).children('div').toggle(function() {
                 $('.itemFilterPhone-CL li').click(function() {
                     $(this).css('display', 'block').siblings().css('display', 'none');
                     return false;
