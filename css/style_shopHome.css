@@ -553,14 +553,22 @@
 
         /*修改商品輪播牆-item cart裡的愛心與購物車icon顏色*/
         .shpHeart-CL {
+            display: block;
+            width: 22px;
             color:#FF8888;
             font-size: 22px;
+            cursor: pointer;
+            margin-right: 4px;
         }
 
         .shpShopCar-CL {
+            display: block;
+            width: 24px;
             color: #383E44;
             font-size: 22px;
+            cursor: pointer;
             margin-left: 8px;
+            margin-right: 4px;
         }
 
         /*修改商品輪播牆-金額文字的顏色與新增錢字符號並調整間距*/
@@ -580,8 +588,9 @@
 
         /*修改商品輪播牆-修改追蹤橫欄margin為置中,設定margin-top*/
         .shpHotCartInfo-CL {
-            /* margin-top: 8px; */
+            margin-top: 8px;
             margin-left: 12px;
+            display: flex;
         }
 
         /*UPICK熱銷商品區*/
@@ -786,7 +795,7 @@
 
         /*設定零件區-heart, car, dollor的間距*/
         .shpItem-CL .shpHotCartInfo-CL {
-            margin-left: 8px;
+            /* margin-left: 8px; */
             margin-top: -8px;
         }
         .shpItem-CL .shpHeart-CL {
