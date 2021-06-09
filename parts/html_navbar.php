@@ -40,16 +40,17 @@ $search2 = "&classid=$tableid";
             <!-- 右邊的 保留icon就好 -->
             <form class="form-inline my-2 my-lg-0 navbar-expand-lg">
                 <ul class="navbar-nav ml-auto">
-                    <?php if(isset($_SESSION['loginUser'])): ?>
-                    <!-- 已登入 -->
+                    <?php if (isset($_SESSION['loginUser'])) : ?>
+                        <!-- 已登入 -->
                         <li class="nav-item up-nav-right">
-                        <a class="nav-link" href="/Upick/web/member/memberFollow.php"><i class="fas fa-heart"></i> 追蹤清單</a>
+                            <a class="nav-link" href="/Upick/web/member/memberFollow.php"><i class="fas fa-heart"></i> 追蹤清單</a>
                         </li>
-                        <li class="nav-item up-nav-right">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart "></i> 購物車
+                        <li class="nav-item up-nav-right <?= $pageName == 'cart' ? 'active' : '' ?>">
+                            <a class="nav-link" href="/Upick/web/shopcar/shopcart_origin.php"><i class="fas fa-shopping-cart "></i> 購物車
+                                <span class="badge badge-pill badge-danger cart-count">0</span>
                             </a>
                         </li>
-                        <li class="nav-item up-nav-right">
+                        <li class="nav-item up-nav-righ">
                             <a class="nav-link" href="/Upick/web/member/memberCentre.php"><i class="fas fa-user"></i> 會員中心
                             </a>
                         </li>
@@ -60,15 +61,18 @@ $search2 = "&classid=$tableid";
                         </li>
                         <a class="loginBtn_HC wBtnNav my-2 my-sm-0" href="logout.php" type="submit">登出</a>
 
-                    <?php else: ?>
-                    <!-- 未登入 -->
+                    <?php else : ?>
+                        <!-- 未登入 -->
                         <li class="nav-item up-nav-right">
-                        <a class="nav-link" href="/Upick/web/member/login.php"><i class="fas fa-heart"></i> 追蹤清單</a>
+                            <a class="nav-link" href="/Upick/web/member/login.php"><i class="fas fa-heart"></i> 追蹤清單</a>
                         </li>
-                        <li class="nav-item up-nav-right">
-                            <a class="nav-link" href="#"><i class="fas fa-shopping-cart "></i> 購物車
+                        <li class="nav-item up-nav-right <?= $pageName == 'cart' ? 'active' : '' ?>">
+                            <a class="nav-link" href="/Upick/web/shopcar/shopcart_origin.php"><i class="fas fa-shopping-cart "></i> 購物車
+                                <span class="badge badge-pill badge-danger cart-count">0</span>
                             </a>
                         </li>
+
+
                         <li class="nav-item up-nav-right">
                             <a class="nav-link" href="/Upick/web/member/login.php"><i class="fas fa-user"></i> 會員中心
                             </a>
@@ -79,7 +83,7 @@ $search2 = "&classid=$tableid";
                             </a>
                         </li>
                         <a class="loginBtn_HC wBtnNav my-2 my-sm-0" href="/Upick/web/member/login.php" type="submit">登入 / 註冊</a>
-                    <?php endif; ?>                    
+                    <?php endif; ?>
                 </ul>
             </form>
         </div>
@@ -221,5 +225,4 @@ $search2 = "&classid=$tableid";
             $(this).css('marginTop', '0px');
         })
     })
-
 </script>
