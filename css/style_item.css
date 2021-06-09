@@ -232,14 +232,22 @@
 
         /*修改商品輪播牆-item cart裡的愛心與購物車icon顏色*/
         .shpHeart-CL {
-            color:#FF2181;
+            display: block;
+            width: 22px;
+            color:#FF8888;
             font-size: 22px;
+            cursor: pointer;
+            margin-right: 4px;
         }
 
         .shpShopCar-CL {
-            color: #374052;
+            display: block;
+            width: 24px;
+            color: #383E44;
             font-size: 22px;
+            cursor: pointer;
             margin-left: 8px;
+            margin-right: 4px;
         }
 
         /*修改商品輪播牆-金額文字的顏色與新增錢字符號並調整間距*/
@@ -261,6 +269,7 @@
         .shpHotCartInfo-CL {
             margin-top: 8px;
             margin-left: 12px;
+            display: flex;
         }
 
         /*零件篩選區*/
