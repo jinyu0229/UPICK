@@ -1,189 +1,29 @@
-.wpNavSpace-CL {
-    height: 80px;
-    width: 1300px;
-}
-
-/* 進度條 */
-#wp-progressBar {
-    width: 1000px;
+.wp {
     margin: auto;
-    padding-top: 100px;
+    padding-top: 200px;
 }
 
-.wp-progress {
-    position: relative;
-    width: 100%;
-    height: 120px;
-    display: flex;
-    flex: wrap;
-    justify-content: space-between;
-    counter-reset: num;
-}
-
-.line-bg {
-    opacity: 20%;
-    width: 100%;
-    height: 8px;
+.arrow {
+    font-size: 28px;
     position: absolute;
-    z-index: -1;
-    border-radius: 4px;
-    transform: translate(0%, 50%);
+    transition: .3s;
+    z-index: 10;
+    color: #383E44;
 }
 
-.line {
-    width: 1%;
-    height: 8px;
-    position: absolute;
-    z-index: -1;
-    border-radius: 4px;
-    transform: translate(0%, 50%);
+.left-arrow {
+    top: 50%;
+    left: 0%;
 }
 
-/* 黃色數字圈圈 */
-.wp-point::before {
-    color: #fff;
-    counter-increment: num;
-    content: counter(num);
-}
+.right-arrow {
 
-.wp-point {
-    width: 16px;
-    /* 區塊大小 */
-    height: 16px;
-    /* 區塊大小 */
-    background-color: #FDBD3F;
-    /* 區塊顏色 */
-    border-radius: 50%;
-    /* 區塊圓角 */
-    content: "●";
-    font-size: 10px;
-    font-weight: bold;
-    line-height: 15px;
-    /* 上下置中 */
-    text-align: center;
-    /* 水平置中 */
-    margin: 0 0 10px 0;
-}
-
-/* 對話框 原樣式 */
-.wp-point .title {
-    position: absolute;
-    margin-top: 16px;
-    padding: 8px;
-    transform: translateX(-40%);
-    width: 80px;
-    height: 45px;
-    background: #fff;
-    color: #13a3de;
-    border-radius: 15px;
-}
-
-.wp-point .title-delta {
-    position: absolute;
-    margin-top: 0;
-    width: 0;
-    height: 0;
-    border: 8px solid;
-    border-color: transparent transparent #fff transparent;
-}
-
-/* 對話框 藍色樣式 */
-.wp-point .title-0 {
-    position: absolute;
-    margin-top: 16px;
-    padding: 8px;
-    transform: translateX(-40%);
-    width: 80px;
-    height: 45px;
-    background: #13a3de;
-    color: #fff;
-    border-radius: 15px;
-}
-
-.wp-point .title-delta-0 {
-    position: absolute;
-    margin-top: 0;
-    width: 0;
-    height: 0;
-    border: 8px solid;
-    border-color: transparent transparent #13a3de transparent;
-}
-
-/* 對話框 灰色樣式 */
-.wp-point .title-1 {
-    position: absolute;
-    margin-top: 16px;
-    padding: 8px;
-    transform: translateX(-40%);
-    width: 80px;
-    height: 45px;
-    background: #fff;
-    color: #ccc;
-    border-radius: 15px;
-}
-
-.wp-point .title-delta-1 {
-    position: absolute;
-    margin-top: 0;
-    width: 0;
-    height: 0;
-    border: 8px solid;
-    border-color: transparent transparent #fff transparent;
-}
-
- /* 商品內容 */
-.wp-carousel .fas {
-    color: #061127;
-    font-size: 32px;
-}
-
-.wp-container{
-    padding-top: 100px;
-    width: 1100px;
-    margin: 0 auto;
-}
-.wp-slide {
-    width: 700px;
-    /* height: 420px; */
-    margin: 0 auto;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-}
-
-.wp-row {
-    width: 80px;
-    /* height: 400px; */
-    padding: 10px;
-    border-radius: 16px;
-    justify-content: center;
-    text-align: center;
-    transition: .5s;
-}
-
-.wp-row:hover {
-    width: 80px;
-    /* height: 400px; */
-    padding: 10px;
-    border-radius: 4px;
-    background-color: #fafafa;
-    /* justify-self: start; */
-}
-.wp-row 
-p,
-h5 {
-    line-height: 20px;
-    padding: 0px 0;
-}
-
-.wp-row img {
-    width: 100%;
-    border-radius: 4px;
-    padding-bottom: 12px;
+    top: 50%;
+    right: 0%;
 }
 
 .wp-button {
-    width: 100px;
+    width: 200px;
     border-radius: 80px;
     padding: 8px;
     margin: 4px;
@@ -195,13 +35,11 @@ h5 {
 }
 
 .wp-button:hover {
-    color: #ccc;
+    color: #E4E8EE;
 }
 
 .wp-btn-product {
-    width: 80px;
-    border-radius: 16px;
-    background-color: #384449;
+    border-radius: 80px;
     padding: 8px;
     margin: 4px;
     border: none;
@@ -210,20 +48,79 @@ h5 {
     font-size: 14px;
     color: #fff;
     transition: .5s;
+    align-items: end;
 }
 
-.wp-btn-product-hover {
-    width: 80px;
-    border-radius: 16px;
-    justify-content: center;
-    text-align: center;
+.wp-btn-product:hover {
+    color: #fff;
     transition: .5s;
-    background-color: #384449;
-    color: #Fff;
 }
 
-/* 卡片 */
+
+
 .wp-card {
+    height: 500px;
+    background-color: #FF98C930;
     border-radius: 4px;
     padding: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    /* justify-content: center;
+    align-self: center; */
+}
+
+.totalPrice {
+    text-align: center;
+}
+
+.list-group {
+    height: 330px;
+    overflow-y: scroll;
+}
+
+.wp-product-index {
+    justify-content: center;
+    align-self: center;
+}
+
+
+.wp-info {
+    justify-content: center;
+    align-self: center;
+}
+
+.wp-slide {
+    max-width: 700px;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+}
+
+.wp-wrap {
+    width: 700px;
+    position: absolute;
+}
+
+.wp-row {
+    width: 220px;
+    height: 500px;
+    border-radius: 4px;
+    padding: 10px;
+    background-color: #f5f6f8;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+.wp-row img {
+    width: 100%;
+}
+
+.wp-row-p {
+    background-color: #FF98C960;
+    color: #fafafa;
 }

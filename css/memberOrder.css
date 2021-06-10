@@ -197,6 +197,28 @@
             display: none;
         }
 
+        /* TOP按鈕樣式 */
+        .memTop_HC {
+            display: block;
+            width: 60px;
+            height: 60px;
+            background-color: #383E44;
+            color: #FFF;
+            border-radius: 50px 50px 0 50px;
+            line-height: 60px;
+            text-align: center;
+            text-decoration: none;
+            position: absolute;
+            right: 40px;
+            bottom: 40px;
+            position: fixed;
+        }
+
+        .memTop_HC:hover {
+            color: #FFF;
+            text-decoration: none;
+        }
+
         /* 手機板 */
         @media screen and (max-width: 375px) {
             .container {
@@ -209,6 +231,10 @@
             }
 
             .navTwo_ZY{
+                display: none;
+            }
+
+            .shpFooterSpace-CL, .colorspace, .shpFooterOut-CL{
                 display: none;
             }
 
@@ -289,5 +315,16 @@
                 text-align: center;
                 line-height: 40px;
                 color: #FFF;
+            }
+
+            /* TOP按鈕樣式 */
+            .memTop_HC {
+                right: 20px;
+                bottom: 50px;
+                background-color: #383e44ad;
+                border: 1px solid #FFF;
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
             }
         }

@@ -1,12 +1,6 @@
 .container {
     overflow: hidden;
 }
-
-.wpNavSpace-CL {
-    height: 200px;
-    width: 1300px;
-}
-
 /* 繪圖設計 */
 .wp-design {
     color: #FF98C9;
@@ -60,6 +54,38 @@
 
 .wp-button:focus {
     outline: none;
+}
+
+.wp-gaming-button:hover {
+    background-color: #43D3FD;
+}
+
+.wp-gaming-button:focus {
+    background-color: #43D3FD;
+}
+
+.wp-editing-button:hover {
+    background-color: #47D5CE;
+}
+
+.wp-editing-button:focus {
+    background-color: #47D5CE;
+}
+
+.wp-document-button:hover {
+    background-color: #BDAAFF;
+}
+
+.wp-document-button:focus {
+    background-color: #BDAAFF;
+}
+
+.wp-design-button:hover {
+    background-color: #FF98C9;
+}
+
+.wp-design-button:focus {
+    background-color: #FF98C9;
 }
 
 .wp-bg {

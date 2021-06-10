@@ -122,6 +122,10 @@
                 display: none;
             }
 
+            .shpFooterSpace-CL, .colorspace, .shpFooterOut-CL{
+                display: none;
+            }
+
             /* 會員中心title */
             .memberCen_HC {
                 width: 355px;

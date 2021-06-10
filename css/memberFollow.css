@@ -272,6 +272,10 @@
                 display: none;
             }
 
+            .shpFooterSpace-CL, .colorspace, .shpFooterOut-CL{
+                display: none;
+            }
+
             /* 左側Menu */
             .memLeftMenu_HC {
                 display: none;

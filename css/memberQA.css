@@ -319,6 +319,10 @@
                 display: none;
             }
 
+            .shpFooterSpace-CL, .colorspace, .shpFooterOut-CL{
+                display: none;
+            }
+
             .shpFooterSpace-CL{
                 width: 355px;
             }

@@ -3,10 +3,11 @@
     width: 1300px;
 }
 
-.wp-title {
-    color: #FF2181;
-    letter-spacing: 20px;
+.wp-0-container a:hover{
+    color: transparent;
+    text-decoration: none;
 }
+
 
 /* 繪圖設計 */
 .wp-design {
@@ -27,6 +28,8 @@
 .wp-gaming {
     color: #43D3FD;
 }
+
+
 
 .wp-0-container {
     display: flex;
