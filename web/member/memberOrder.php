@@ -1,4 +1,4 @@
-<?php require __DIR__.'/../../__connect_db.php';
+<?php require __DIR__ . '/../../__connect_db.php';
 
 define('WEB_ROOT', '/UPICK');
 session_start();
@@ -9,9 +9,8 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 // $order = $pdo->query($sql)->fetchAll();
 
-if($stmt->rowCount()){
+if ($stmt->rowCount()) {
     $row = $stmt->fetchAll();
-    
 }
 ?>
 
@@ -66,66 +65,66 @@ if($stmt->rowCount()){
                 </div>
                 <!-- 訂單列表 -->
                 <div class="memTableArea_HC">
-                    <table id="memWebTable_HC">
-                        <thead>
-                            <tr>
-                                <th class="memSerialNumTh_HC">訂單編號</th>
-                                <th>訂購日期</th>
-                                <th>訂單狀態</th>
-                                <th class="memDisplay_HC">運送狀態</th>
-                                <th class="memDisplay_HC">運送方式</th>
-                                <th class="memDisplay_HC">付款方式</th>
-                                <th class="memDisplay_HC">訂單總額</th>
-                                <th class="memDisplay_HC">取消訂單</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- 尚無訂單 -->
-                            <tr id="memNoOder_HC">
-                                <td colspan="8">
-                                    <h3>目前尚無訂單</h3>
-                                </td>
-                            </tr>
-                            <?php foreach ($row as $oderR): ?>
-                            <tr class="memOder_HC">                                
-                                <td class="memSerialNumTd_HC">
-                                    <!-- 訂單編號 -->
-                                    <a href="/Upick/web/member/memberOderDetail.php"
-                                        class="memSerialNum_HC">100612719<?= htmlentities($oderR['id']) ?></a>
-                                </td>
-                                <td>
-                                    <!-- 訂購日期 -->
-                                    <p class="memBuyDay_HC"><?= htmlentities($oderR['order_date']) ?></p>
-                                </td>
-                                <td>
-                                    <!-- 訂單狀態 -->
-                                    <p class="memOrderSta_HC"><?= htmlentities($oderR['commodity_status']) ?></p>
-                                </td>
-                                <td class="memDisplay_HC memToteSta_HC">
-                                    <!-- 運送狀態 -->
-                                    <p class="memToteSta_HC"><?= htmlentities($oderR['shipping_status']) ?></p>
-                                </td>
-                                <td class="memDisplay_HC memTote_HC">
-                                    <!-- 運送方式 -->
-                                    <p class="memTote_HC"><?= htmlentities($oderR['shipping_method']) ?></p>
-                                </td>
-                                <td class="memDisplay_HC">
-                                    <!-- 付款方式 -->
-                                    <p class="memPayWay_HC"><?= htmlentities($oderR['payment']) ?></p>
-                                </td>
-                                <td class="memDisplay_HC memOrderTotal_HC">
-                                    <!-- 訂單總額 -->
-                                    <p class="memOrderTotal_HC">$<?= htmlentities($oderR['amount']) ?></p>
-                                </td>
-                                <td class="memDisplay_HC"><a href="./memberQA.php">聯絡我們</a></td>                                
-                            </tr>
-                            <?php endforeach; ?>                            
-                        </tbody>
-                    </table>
-                </div>                
+                    <?php if (empty($row)) : ?>
+                        <div class="memNoOrder_HC">
+                            <h1>目前尚無訂單</h1>
+                        </div>
+                    <?php else : ?>
+                        <table id="memWebTable_HC">
+                            <thead>
+                                <tr>
+                                    <th class="memSerialNumTh_HC">訂單編號</th>
+                                    <th>訂購日期</th>
+                                    <th>訂單狀態</th>
+                                    <th class="memDisplay_HC">運送狀態</th>
+                                    <th class="memDisplay_HC">運送方式</th>
+                                    <th class="memDisplay_HC">付款方式</th>
+                                    <th class="memDisplay_HC">訂單總額</th>
+                                    <th class="memDisplay_HC">取消訂單</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="memOder_HC">
+                                    <?php foreach ($row as $oderR) : ?>
+                                        <td class="memSerialNumTd_HC">
+                                            <!-- 訂單編號 -->
+                                            <a href="/Upick/web/member/memberOderDetail.php" class="memSerialNum_HC">100612719<?= htmlentities($oderR['id']) ?></a>
+                                        </td>
+                                        <td>
+                                            <!-- 訂購日期 -->
+                                            <p class="memBuyDay_HC"><?= htmlentities($oderR['order_date']) ?></p>
+                                        </td>
+                                        <td>
+                                            <!-- 訂單狀態 -->
+                                            <p class="memOrderSta_HC"><?= htmlentities($oderR['commodity_status']) ?></p>
+                                        </td>
+                                        <td class="memDisplay_HC memToteSta_HC">
+                                            <!-- 運送狀態 -->
+                                            <p class="memToteSta_HC"><?= htmlentities($oderR['shipping_status']) ?></p>
+                                        </td>
+                                        <td class="memDisplay_HC memTote_HC">
+                                            <!-- 運送方式 -->
+                                            <p class="memTote_HC"><?= htmlentities($oderR['shipping_method']) ?></p>
+                                        </td>
+                                        <td class="memDisplay_HC">
+                                            <!-- 付款方式 -->
+                                            <p class="memPayWay_HC"><?= htmlentities($oderR['payment']) ?></p>
+                                        </td>
+                                        <td class="memDisplay_HC memOrderTotal_HC">
+                                            <!-- 訂單總額 -->
+                                            <p class="memOrderTotal_HC">$<?= htmlentities($oderR['amount']) ?></p>
+                                        </td>
+                                        <td class="memDisplay_HC"><a href="./memberQA.php">聯絡我們</a></td>
+                                    <?php endforeach; ?>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
     </div>
+    <a href="javascript:topMove();" class="memTop_HC">Top</a>
     <!--區隔撐開頁尾的空間-->
     <div class="shpFooterSpace-CL"></div>
     <!--頁尾-->
@@ -136,39 +135,45 @@ if($stmt->rowCount()){
 <!--SCRIPT-->
 <?php include __DIR__ . '/../../parts/scripts.php' ?>
 
+
 <script>
-// $(document).ready(function (){
-//     GetMemberOrder();
-// });
+    // $(document).ready(function (){
+    //     GetMemberOrder();
+    // });
 
-// function GetMemberOrder(){
-//     $.ajax({
-//         type: "POST", //方法
-//         url: "read-members-api.php", //表單接收url
-//         dataType: "json",
-//     });
+    // function GetMemberOrder(){
+    //     $.ajax({
+    //         type: "POST", //方法
+    //         url: "read-members-api.php", //表單接收url
+    //         dataType: "json",
+    //     });
 
-//     $.ajax({
-//         type: POST,
-//         url: "order-api.php",
-//         dataType: "json",
-//         success:function(data){
-//             console.log("OK");
-//         },
-//         error: function(data) {
-//             console.log("NOK");
-//         }
-//     });
-// }
+    //     $.ajax({
+    //         type: POST,
+    //         url: "order-api.php",
+    //         dataType: "json",
+    //         success:function(data){
+    //             console.log("OK");
+    //         },
+    //         error: function(data) {
+    //             console.log("NOK");
+    //         }
+    //     });
+    // }
 
-//網頁版頁碼focus顏色
-$('.wWhitePGnumber').click(function() {
-    $(this).css('backgroundColor', '#7FE0DC').siblings().css('backgroundColor', '#FFFFFF');
-    newPg1 = $(this).text();
-    $('.wWhiteNewPG').text(newPg1);
-})
+    //網頁版頁碼focus顏色
+    $('.wWhitePGnumber').click(function() {
+        $(this).css('backgroundColor', '#7FE0DC').siblings().css('backgroundColor', '#FFFFFF');
+        newPg1 = $(this).text();
+        $('.wWhiteNewPG').text(newPg1);
+    })
 
-
+    function topMove() {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }
 </script>
 
 </html>
