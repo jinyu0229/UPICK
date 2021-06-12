@@ -63,7 +63,7 @@ if ($stmt->rowCount()) {
                         <div class="memSquare02_HC"></div>
                     </div>
                 </div>
-                <!-- 訂單列表 -->
+                <!-- WEB訂單列表 -->
                 <div class="memTableArea_HC">
                     <?php if (empty($row)) : ?>
                         <div class="memNoOrder_HC">
@@ -84,8 +84,8 @@ if ($stmt->rowCount()) {
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="memOder_HC">
-                                    <?php foreach ($row as $oderR) : ?>
+                                <?php foreach ($row as $oderR) : ?>
+                                    <tr class="memOder_HC">
                                         <td class="memSerialNumTd_HC">
                                             <!-- 訂單編號 -->
                                             <a href="/Upick/web/member/memberOderDetail.php" class="memSerialNum_HC">100612719<?= htmlentities($oderR['id']) ?></a>
@@ -115,14 +115,80 @@ if ($stmt->rowCount()) {
                                             <p class="memOrderTotal_HC">$<?= htmlentities($oderR['amount']) ?></p>
                                         </td>
                                         <td class="memDisplay_HC"><a href="./memberQA.php">聯絡我們</a></td>
-                                    <?php endforeach; ?>
-                                </tr>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     <?php endif; ?>
                 </div>
+                <!-- 手機訂單列表 -->
+                <?php if (empty($row)) : ?>
+                    <div class="memNoOrder_HC">
+                        <h1>目前尚無訂單</h1>
+                    </div>
+                <?php else : ?>
+                <div class="memMobileDetail_HC">
+                    <?php foreach ($row as $oderR) : ?>
+                        <div class="memDtailTitle_HC">
+                            <p>訂單編號：100612719<?= htmlentities($oderR['id']) ?></p>
+                            <a href="/Upick/web/member/memberOderDetail.php">查看訂單明細</a>
+                        </div>
+                        <div class="memDetailOrderArea_HC">
+                            <ul class="memDetailTitle_HC">
+                                <li>
+                                    <p>購買日期</p>
+                                </li>
+                                <li>
+                                    <p>訂單狀態</p>
+                                </li>
+                                <li>
+                                    <p>運送狀態</p>
+                                </li>
+                                <li>
+                                    <p> 運送方式</p>
+                                </li>
+                                <li>
+                                    <p>付款方式</p>
+                                </li>
+                                <li>
+                                    <p>訂單總額</p>
+                                </li>
+                                <li>
+                                    <p>取消訂單</p>
+                                </li>
+                            </ul>
+                            <ul class="memDetailCon_HC">
+                                <li>
+                                    <p class="memBuyDay_HC"><?= htmlentities($oderR['order_date']) ?></p>
+                                </li>
+                                <li>
+                                    <p class="memOrderSta_HC"><?= htmlentities($oderR['commodity_status']) ?></p>
+                                </li>
+                                <li>
+                                    <p class="memToteSta_HC"><?= htmlentities($oderR['shipping_status']) ?></p>
+                                </li>
+                                <li>
+                                    <p class="memTote_HC"><?= htmlentities($oderR['shipping_method']) ?></p>
+                                </li>
+                                <li>
+                                    <p class="memPayWay_HC"><?= htmlentities($oderR['payment']) ?></p>
+                                </li>
+                                <li>
+                                    <p class="memOrderTotal_HC">$<?= htmlentities($oderR['amount']) ?></p>
+                                </li>
+                                <li>
+                                    <a href="/Upick/web/member/memberQA.php">聯絡客服</a>
+                                </li>
+                            </ul>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <?php endif; ?>
+                </div>
+
+                
+            
             </div>
-        </div>
     </div>
     <a href="javascript:topMove();" class="memTop_HC">Top</a>
     <!--區隔撐開頁尾的空間-->
