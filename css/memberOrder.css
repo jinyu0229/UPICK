@@ -163,10 +163,16 @@
             margin-top: 10px;
         }
 
-        /* 空訂單狀態樣式 */
-        /* .memOder_HC {
-            display: none;
-        } */
+        /* 尚無訂單樣式 */
+        .memNoOrder_HC{
+            width: 100%;
+            height: 600px;
+            padding-top: 29%;
+            text-align: center;
+            background-color: #FFF;
+            border-radius: 4px;
+            box-shadow: 3px 3px 10px #E4E8EE;
+        }
 
         #memWebTable_HC>tbody>tr#memNoOder_HC {
             height: 500px;
@@ -219,6 +225,10 @@
             text-decoration: none;
         }
 
+        .memMobileDetail_HC {
+            display: none;
+        }
+
         /* 手機板 */
         @media screen and (max-width: 375px) {
             .container {
@@ -234,7 +244,7 @@
                 display: none;
             }
 
-            .shpFooterSpace-CL, .colorspace, .shpFooterOut-CL{
+            .shpFooterSpace-CL, .colorspace, .shpFooterOut-CL, .memTableArea_HC{
                 display: none;
             }
 
@@ -326,5 +336,78 @@
                 width: 50px;
                 height: 50px;
                 line-height: 50px;
+            }
+
+            /* 手機明細 */
+            .memMobileDetail_HC {
+                display: block;
+                margin-top: 70px;
+            }
+
+            .memDtailTitle_HC {
+                display: flex;
+                justify-content: space-between;
+                background-color: #383E44;
+                border-radius: 4px 4px 0 0;
+                height: 35px;
+                padding: 0 10px;
+            }
+
+            .memDtailTitle_HC>p {
+                color: #FFF;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 35px;
+            }
+            .memDtailTitle_HC>a {
+                color: #FFF;
+                font-size: 14px;
+                font-weight: 700;
+                line-height: 35px;
+                text-decoration: underline;
+            }
+
+            /* 訂單詳細內容 */
+            .memDetailOrderArea_HC {
+                display: flex;
+                margin-bottom: 20px;
+                border-bottom: 2px solid #383E44;
+            }
+
+            .memDetailTitle_HC {
+                width: 100px;
+                margin-bottom: 0;
+            }
+
+            .memDetailTitle_HC>li {
+                height: 40px;
+                border-bottom: 1px solid #E4E8EE;
+            }
+
+            .memDetailTitle_HC>li>p {
+                line-height: 40px;
+                font-weight: 700;
+                text-align: center;
+            }
+
+            .memDetailCon_HC{
+                margin-bottom: 0;
+            }
+
+            .memDetailCon_HC>li {
+                width: 255px;
+                height: 40px;
+                border-bottom: 1px solid #E4E8EE;
+            }
+
+            .memDetailCon_HC>li>p,
+            a {
+                line-height: 40px;
+            }
+
+            .memDetailCon_HC>li>a {
+                font-size: 14px;
+                text-decoration: underline;
+                color: #383E44;
             }
         }
