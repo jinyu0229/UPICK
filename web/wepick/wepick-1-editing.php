@@ -12,8 +12,7 @@
     <!-- google font 'Freckle Face', cursive-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Freckle+Face&display=swap" rel="stylesheet">
+
     <!-- wp-1.css -->
     <link rel="stylesheet" href="/Upick/css/wp-1.css">
     <!-- style -->
@@ -45,9 +44,12 @@
                 影片剪輯
             </h2>
             <div class="mx-auto wp-editing wp-button-group">
-                <button class="wp-button wp-editing">一鍵組機</button>
-                <a href="/Upick/web/wepick/wepick-2.php">
-                    <button class="wp-button wp-editing">自選品牌</button></a>
+                <a href="/Upick/web/wepick/wepick-2-editing.php">
+                    <button class="wp-button wp-editing-button wp-editing.php?classid=19gaming_com">一鍵組機</button>
+                </a>
+                <a href="/Upick/web/wepick/wepick-3-editing.php">
+                    <button class="wp-button wp-editing-button wp-editing">自選零件</button>
+                </a>
             </div>
         </div>
 

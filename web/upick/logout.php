@@ -6,4 +6,4 @@ unset($_SESSION['loginUser']);
 
 header("Location: ../member/login.php");
 
-// UPICK 登出
+// 商品細節頁 登出

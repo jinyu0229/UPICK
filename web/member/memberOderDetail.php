@@ -3,21 +3,20 @@
 define('WEB_ROOT', '/UPICK');
 session_start();
 
-$sql = "SELECT * FROM orders o JOIN order_details d ON o.`id` = d.`order_id` WHERE `email`=?";
+$order_id = $_GET['order_id'];
+$sql = "SELECT * FROM order_details WHERE `order_id`=?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([
-    $_SESSION['loginUser'],
+    $_GET['order_id'],
 ]);
 
 if($stmt->rowCount()){
     $row = $stmt->fetchAll();
 };
 
-if($stmt->rowCount()){
-    $row2 = $stmt->fetch();
-};
-
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,7 +71,7 @@ if($stmt->rowCount()){
                 <div class="memWebDetail_HC">
                     <div class="memSerialNumTitle_HC">
                         <h4>訂單編號：</h4>
-                        <h4 class="memSerialNum_HC">100612719<?= htmlentities($row2['order_id']) ?></h4>
+                        <h4 class="memSerialNum_HC">100612719<?= htmlentities($_GET['order_id']) ?></h4>
                     </div>
                     <table id="memWebTable_HC">
                         <thead>
@@ -92,25 +91,20 @@ if($stmt->rowCount()){
                                     </p>
                                 </td>
                                 <!-- 單價 -->
-                                <td>
-                                    <p class="memUPrice_HC">$<?= htmlentities($oderR['price']) ?></p>
+                                <td class="memUPrice_HC price" data-price="<?= htmlentities($oderR['price']) ?>">
                                 </td>
                                 <!-- 數量 -->
-                                <td>
-                                    <p class="memQuantity_HC"><?= htmlentities($oderR['quantity']) ?></p>
-                                </td>
+                                <td class="memQuantity_HC qty" data-qty="<?= htmlentities($oderR['quantity']) ?>"></td>
                                 <!-- 小計 -->
-                                <td>
-                                    <p class="memSubtotal_HC">$13899</p>
-                                </td>
+                                <td class="memSubtotal_HC sub-total"></td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>
                     </table>
+                    <!-- 訂單總額 -->
                     <div class="memTotal_HC">
-                        <p>訂單總額：</p>
-                        <!-- 手機 訂單總額 -->
-                        <p class="memDetailPrice_HC memOrderTotal_HC">$13899</p>
+                        <p class="total_HC">訂單總額：</p>
+                        <p class="memDetailPrice_HC memOrderTotal_HC">13899</p>
                     </div>
                     <button onclick="self.location.href='/Upick/web/member/memberOrder.php'"
                         class="wBtnNGr memDetailBtnShare_HC">回訂單列表</button>
@@ -118,80 +112,32 @@ if($stmt->rowCount()){
                 <!-- 手機訂單明細 -->
                 <div class="memMobileDetail_HC">
                     <div class="memDtailTitle_HC">
-                        <p>訂單編號：1006127192</p>
-                    </div>
-                    <div class="memDetailOrderArea_HC">
-                        <ul class="memDetailTitle_HC">
-                            <li>
-                                <p>購買日期</p>
-                            </li>
-                            <li>
-                                <p>訂單狀態</p>
-                            </li>
-                            <li>
-                                <p>運送狀態</p>
-                            </li>
-                            <li>
-                                <p> 運送方式</p>
-                            </li>
-                            <li>
-                                <p>付款方式</p>
-                            </li>
-                            <li>
-                                <p>訂單總額</p>
-                            </li>
-                            <li>
-                                <p>取消訂單</p>
-                            </li>
-                        </ul>
-                        <ul class="memDetailCon_HC">
-                            <li>
-                                <p class="memBuyDay_HC">2021-06-08</p>
-                            </li>
-                            <li>
-                                <p class="memOrderSta_HC">處理中</p>
-                            </li>
-                            <li>
-                                <p class="memToteSta_HC">-</p>
-                            </li>
-                            <li>
-                                <p class="memTote_HC">到店取貨</p>
-                            </li>
-                            <li>
-                                <p class="memPayWay_HC">信用卡</p>
-                            </li>
-                            <li>
-                                <p class="memOrderTotal_HC">$13899</p>
-                            </li>
-                            <li>
-                                <a href="/Upick/web/member/memberQA.php">聯絡客服</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="memDtailTitle_HC">
-                        <p>訂單明細</p>
+                        <p>訂單編號：100612719<?= htmlentities($_GET['order_id']) ?></p>
                     </div>
                     <div class="memDetailArea_HC">
+                    <?php foreach ($row as $oderR): ?>
                         <div class="memDetailTr_HC">
-                            <p class="memProductTitle_HC">HyperX FURY DDR4 3200 8G x2 桌上型超頻記憶體 HX432C16FB3K2/16</p>
+                            <p class="memProductTitle_HC"><?= htmlentities($oderR['name']) ?></p>
                             <ul class="memDisplayMe_HC">
                                 <li>
-                                    <p class="memUPrice_HC">單價：$13899</p>
+                                    <p class="memUPrice_HC">單價：$<?= htmlentities($oderR['price']) ?></p>
                                 </li>
                                 <li>
-                                    <p class="memQuantity_HC">數量：1</p>
+                                    <p class="memQuantity_HC">數量：<?= htmlentities($oderR['quantity']) ?></p>
                                 </li>
                                 <li>
-                                    <p class="memSubtotal_HC">小計：$13899</p>
+                                    <p class="memSubtotal_HC">小計：$<?= htmlentities($oderR['price']*$oderR['quantity']) ?></p>
                                 </li>
                             </ul>
                         </div>
+                        <?php endforeach; ?>
                     </div>
                     <div class="memDtailTitleReverse_HC">
                         <p>訂單總額：</p>
                         <p class="memPrice_HC memOrderTotal_HC">$13899</p>
                     </div>
-
+                    <button onclick="self.location.href='/Upick/web/member/memberOrder.php'"
+                        class="wBtnNGr memDetailBtnShare_HC">回訂單列表</button>
                 </div>
             </div>
         </div>
@@ -224,14 +170,38 @@ function GetMemberOrderDetail(){
             console.log("NOK");
         }
     });
-}
+};
+
+const calPrices = function () {
+    let total = 0;
+    $('tbody>tr').each(function(){
+        // 顯示單價
+        const $price = $(this).find('.price');
+        const price = $price.attr('data-price') * 1;
+        $price.text('$ ' + price);
+
+        const $qty = $(this).find('.qty');
+        const qty = $qty.attr('data-qty') * 1;
+        $qty.text(qty);
+        $(this).find('.sub-total').text('$ ' + price * qty);
+        total += price * qty;
+    });
+    $('.memOrderTotal_HC').text('$' + total);
+};
+
+
+$(function () {
+    calPrices();
+});
 
 function topMove() {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-}
+};
+
+
 </script>
 
 </html>

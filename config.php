@@ -1,4 +1,3 @@
 <?php
-define('WEB_ROOT','/proj60');
-
+define('WEB_ROOT', '/UPICK');
 session_start();

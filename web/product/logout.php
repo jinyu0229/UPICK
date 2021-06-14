@@ -6,4 +6,4 @@ unset($_SESSION['loginUser']);
 
 header("Location: ../member/login.php");
 
-// 商品細節頁 登出
+// 商場item+dtl 登出

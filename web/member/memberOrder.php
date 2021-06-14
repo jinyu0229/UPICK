@@ -88,7 +88,7 @@ if ($stmt->rowCount()) {
                                     <tr class="memOder_HC">
                                         <td class="memSerialNumTd_HC">
                                             <!-- 訂單編號 -->
-                                            <a href="/Upick/web/member/memberOderDetail.php" class="memSerialNum_HC">100612719<?= htmlentities($oderR['id']) ?></a>
+                                            <a href="/Upick/web/member/memberOderDetail.php?order_id=<?= htmlentities($oderR['id']) ?>" class="memSerialNum_HC">100612719<?= htmlentities($oderR['id']) ?></a>
                                         </td>
                                         <td>
                                             <!-- 訂購日期 -->
@@ -130,8 +130,9 @@ if ($stmt->rowCount()) {
                 <div class="memMobileDetail_HC">
                     <?php foreach ($row as $oderR) : ?>
                         <div class="memDtailTitle_HC">
+                        <!-- <a href="/Upick/web/member/memberOderDetail.php?order_id=<?= htmlentities($oderR['id']) ?>" class="memSerialNum_HC">100612719<?= htmlentities($oderR['id']) ?></a> -->
                             <p>訂單編號：100612719<?= htmlentities($oderR['id']) ?></p>
-                            <a href="/Upick/web/member/memberOderDetail.php">查看訂單明細</a>
+                            <a href="/Upick/web/member/memberOderDetail.php?order_id=<?= htmlentities($oderR['id']) ?>">查看訂單明細</a>
                         </div>
                         <div class="memDetailOrderArea_HC">
                             <ul class="memDetailTitle_HC">
@@ -203,29 +204,29 @@ if ($stmt->rowCount()) {
 
 
 <script>
-    // $(document).ready(function (){
-    //     GetMemberOrder();
-    // });
+    $(document).ready(function (){
+        GetMemberOrder();
+    });
 
-    // function GetMemberOrder(){
-    //     $.ajax({
-    //         type: "POST", //方法
-    //         url: "read-members-api.php", //表單接收url
-    //         dataType: "json",
-    //     });
+    function GetMemberOrder(){
+        $.ajax({
+            type: "POST", //方法
+            url: "read-members-api.php", //表單接收url
+            dataType: "json",
+        });
 
-    //     $.ajax({
-    //         type: POST,
-    //         url: "order-api.php",
-    //         dataType: "json",
-    //         success:function(data){
-    //             console.log("OK");
-    //         },
-    //         error: function(data) {
-    //             console.log("NOK");
-    //         }
-    //     });
-    // }
+        $.ajax({
+            type: POST,
+            url: "order-api.php",
+            dataType: "json",
+            success:function(data){
+                console.log("OK");
+            },
+            error: function(data) {
+                console.log("NOK");
+            }
+        });
+    }
 
     //網頁版頁碼focus顏色
     $('.wWhitePGnumber').click(function() {
@@ -240,6 +241,8 @@ if ($stmt->rowCount()) {
             behavior: "smooth"
         });
     }
+
+    
 </script>
 
 </html>

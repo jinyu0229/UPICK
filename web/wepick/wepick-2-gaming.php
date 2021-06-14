@@ -15,14 +15,20 @@
     <!-- style -->
     <style>
     /* 卡片 */
-     .wp-card {
+    .wp-card {
             background-color: #FF98C930;
         }
-    .line {
+
+        .line {
             background-color: #FF8888;
         }
-    .product-info {
+
+        .product-info {
             height: 110px;
+        }
+
+        .wp-btn-product {
+            background-color: #384449;
         }
     </style>
 </head>
@@ -32,7 +38,7 @@
     <div class="wpNavSpace-CL"></div>
 
     <div class="container">
- <!-- 進度條 -->
+        <!-- 進度條 -->
         <div id="wp-progressBar" class="wp-progress">
             <div class="wp-point">
                 <!-- 對話小尖尖 -->
@@ -146,7 +152,7 @@
                 <!-- CPU -->
                 <div class="col-lg-12 wp-slide CPU">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -158,7 +164,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -170,7 +176,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -184,7 +190,7 @@
                 <!-- MB -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -196,7 +202,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -208,7 +214,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -222,7 +228,7 @@
                 <!-- RAM -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -234,7 +240,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -246,7 +252,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -260,7 +266,7 @@
                 <!-- HDD -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -272,7 +278,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -284,7 +290,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -298,7 +304,7 @@
                 <!-- SSD -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -310,7 +316,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -322,7 +328,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -336,7 +342,7 @@
                 <!-- VGA -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -348,7 +354,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -360,7 +366,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -374,7 +380,7 @@
                 <!-- CASE -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -386,7 +392,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -398,7 +404,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -412,7 +418,7 @@
                 <!-- POWER -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -424,7 +430,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -436,7 +442,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -450,7 +456,7 @@
                 <!-- FAN -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -462,7 +468,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -474,7 +480,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -488,7 +494,7 @@
                 <!-- chart -->
                 <div class="col-lg-12 wp-slide">
                     <div class="wp-row col-4 ">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -500,7 +506,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="col-4 wp-row">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -512,7 +518,7 @@
                         <button id="wp-btn-product" class="btn wp-btn-product wBtnNormalDark">選擇</button>
                     </div>
                     <div class="wp-row col-4">
-                         <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
+                        <img src="/Upick/images/wpimg/AMD01.jpg" alt="">
                         <h5>AMD Athlon™ 3000G</h5>
                         <div class="product-info">
                             <p>
@@ -616,12 +622,10 @@
         $('.wp-btn-product').toggleClass('wp-btn-product-hover')
     });
     // 選擇後新增li
-    $('.wp-btn-product').click(function() {
-        console.log('hi')
-        $("#menu").append(
-            '<li class="list-group-item d-flex"><p class= "col-9 my-auto" > HyperX FURY DDR4 3200 8G x2 桌上型超頻記憶體 HX432C16FB3K2 / 16 </p><h5 class="price col-3 my-auto">$1000</h5></li >'
-        );
-    })
+    $(document).on('click', '#wp-btn-product', function () {
+            console.log('hi')
+            $("#wpList").append('<li class="list-group-item d-flex"><p class= "col-9 my-auto" > HyperX FURY DDR4 3200 8G x2 桌上型超頻記憶體 HX432C16FB3K2 / 16 </p><h5 class="price col-3 my-auto">$1000</h5></li >');
+        })
     </script>
 </body>
 

@@ -17,6 +17,7 @@ session_start();
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
     <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
     <!-- memberCentre.css -->
+    <link rel="icon" href="/Upick/icon/favicon.ico">
     <link rel="stylesheet" href="/Upick/css/memberCentre.css">
 </head>
 

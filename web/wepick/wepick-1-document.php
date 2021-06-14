@@ -10,9 +10,8 @@
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
     <!-- google font 'Freckle Face', cursive-->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Concert+One&family=Freckle+Face&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+
     <!-- wp-1.css -->
     <link rel="stylesheet" href="/Upick/css/wp-1.css">
     <!-- style -->
@@ -45,9 +44,12 @@
                 文書處理
             </h2>
             <div class="mx-auto wp-document wp-button-group">
-                <button class="wp-button wp-document">一鍵組機</button>
-                <a href="/Upick/web/wepick/wepick-2.php">
-                    <button class="wp-button wp-document">自選品牌</button></a>
+                <a href="/Upick/web/wepick/wepick-2-document.php">
+                    <button class="wp-button wp-document-button wp-document">一鍵組機</button>
+                </a>
+                <a href="/Upick/web/wepick/wepick-3-document.php">
+                    <button class="wp-button wp-document-button wp-document">自選零件</button>
+                </a>
             </div>
         </div>
 

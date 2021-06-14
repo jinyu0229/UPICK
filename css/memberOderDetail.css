@@ -403,7 +403,7 @@
 
             .memDetailTr_HC {
                 padding: 0 10px;
-                border-bottom: 1px solid #E4E8EE;
+                border-bottom: 1px solid #9AA3AC;
             }
 
             /* 手機用回訂單列表紐 */
@@ -420,6 +420,10 @@
                 text-align: center;
                 line-height: 40px;
                 color: #FFF;
+            }
+
+            .memMobileDetail_HC>.memDetailBtnShare_HC{
+                margin-top: 20px;
             }
 
             /* TOP按鈕樣式 */
