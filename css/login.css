@@ -230,6 +230,8 @@ p {
     color: #7FFFE1;
     font-size: 13px;
     margin-bottom: 0;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .memServBox_HC:hover{
@@ -255,6 +257,8 @@ p {
     color: #7FFFE1;
     font-size: 13px;
     margin-bottom: 0;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .memPrivacyBox_HC:hover{
@@ -311,6 +315,7 @@ p {
     position: absolute;
     right: 20px;
     top: 20px;
+    cursor: pointer;
 }
 
 .memCloseP_HC{
@@ -320,6 +325,7 @@ p {
     position: absolute;
     right: 20px;
     top: 20px;
+    cursor: pointer;
 }
 
 .memTermsArea_HC>ul>li>p{

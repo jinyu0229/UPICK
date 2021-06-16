@@ -9,6 +9,7 @@ $tableid = isset($_GET['classid']) ? ($_GET['classid']) : '';
 $optionkey = isset($_GET['optionkey']) ? ($_GET['optionkey']) : null;
 $optionvalue = isset($_GET['optionvalue']) ? ($_GET['optionvalue']) : null;
 $optionvalue2 = isset($_GET['optionvalue']) ? ($_GET['optionvalue']) : null;
+$search = isset($_GET['search']) ? ($_GET['search']) : "";
 if (!empty($optionkey) && !empty($optionvalue)) {
     $optiontext = "AND $optionkey = '$optionvalue'";
     $optionforpg = "optionkey=$optionkey&optionvalue=$optionvalue&";
@@ -17,6 +18,15 @@ if (!empty($optionkey) && !empty($optionvalue)) {
 if (empty($optionkey) && empty($optionvalue)) {
     $optiontext = "";
     $optionforpg = "";
+}
+
+if (!empty($search)) {
+    $optiontext2 = " AND `name` LIKE '%$search%'";
+    $optionforpg2 = "search=$search&";
+}
+if (empty($search)) {
+    $optiontext2 = "";
+    $optionforpg2 = "";
 }
 
 
@@ -211,17 +221,22 @@ $perPage = 12; // 每一頁有幾筆
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
 $sort = isset($_GET['sort']) ? ($_GET['sort']) : "id";
 
-$t_sql = "SELECT COUNT(id) FROM $tableid $where $optiontext ORDER BY $sort ASC";
+$t_sql = "SELECT COUNT(id) FROM $tableid $where $optiontext $optiontext2 ORDER BY $sort ASC";
 
 $totalRows = $pdo->query($t_sql)->fetch(PDO::FETCH_NUM)[0];
-$totalPages = ceil($totalRows / $perPage);
 
-if ($page < 1) $page = 1;
-if ($page > $totalPages) $page = $totalPages;
+if ($totalRows > 0) {
+    $totalPages = ceil($totalRows / $perPage);
 
-$p_sql = sprintf("SELECT * FROM $tableid $where $optiontext ORDER BY $sort ASC LIMIT %s, %s ", ($page - 1) * $perPage, $perPage);
+    if ($page < 1) $page = 1;
+    if ($page > $totalPages) $page = $totalPages;
 
-$rows = $pdo->query($p_sql)->fetchAll();
+    $pg2 = ($page - 1) * $perPage;
+
+    $p_sql = "SELECT * FROM $tableid $where $optiontext $optiontext2 ORDER BY $sort ASC LIMIT $pg2, $perPage";
+
+    $rows = $pdo->query($p_sql)->fetchAll();
+}
 
 ?>
 
@@ -386,7 +401,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
                 <!--零件篩選區-->
                 <div class="itemFilter-CL">
                     <div class="itemFilterClear-CL">
-                        <span>您所選擇的關鍵字為：<?= $optionvalue ?></span>
+                        <span>您所選擇的關鍵字為：<?= $optionvalue ?><?= $search ?></span>
                     </div>
                     <table class="table">
                         <tbody>
@@ -462,18 +477,24 @@ $rows = $pdo->query($p_sql)->fetchAll();
                 <div class="shpItem-CL">
 
                     <div class="row">
-                        <?php foreach ($rows as $r) : ?>
-                            <div class="col-xl col-6">
-
-                                <a href="dtl_page.php?classid=<?= $tableid ?>&pid=<?= $r['sid'] ?>" data-sid="<?= $r['sid'] ?>" data-tbid="<?= $tableid ?>">
-                                    <img class="itemShowImg_CL" src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
-                                    <p class="itemShowName_CL"><?= $r['name'] ?></p>
-                                </a>
-                                <!--加入追蹤之愛心,購物車,金額-->
-                                <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL" value="1"></i><i class="fas fa-shopping-cart shpShopCar-CL" value="1"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
-
+                        <?php if ($totalRows < 1) : ?>
+                            <div class="shpSearchNon-CL">
+                                此分類查詢不到相關資料!!
                             </div>
-                        <?php endforeach; ?>
+                        <?php else : ?>
+                            <?php foreach ($rows as $r) : ?>
+                                <div class="col-xl col-6">
+
+                                    <a href="dtl_page.php?classid=<?= $tableid ?>&pid=<?= $r['sid'] ?>" data-sid="<?= $r['sid'] ?>" data-tbid="<?= $tableid ?>">
+                                        <img class="itemShowImg_CL" src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
+                                        <p class="itemShowName_CL"><?= $r['name'] ?></p>
+                                    </a>
+                                    <!--加入追蹤之愛心,購物車,金額-->
+                                    <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL" value="1"></i><i class="fas fa-shopping-cart shpShopCar-CL" value="1"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
+
+                                </div>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
                     </div>
                 </div>
 
@@ -488,15 +509,19 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
 
                     <!--橫向顯示頁碼-->
-                    <?php for ($i = $page - 2; $i <= $page + 2; $i++) :
-                        if ($i >= 1 and $i <= $totalPages) :
-                            $qs['page'] = $i;
-                    ?>
-                            <!--頁數號碼-->
-                            <li class="wWhitePgItem wWhitePGnumber <?= $i == $page ? 'wWhitePgColor' : '' ?>"><a class="wWhitePgLink" href="?classid=<?= $tableid ?>&<?= $optionforpg ?>&sort=<?= $sort ?>&<?= http_build_query($qs) ?>"><?= $i ?></a></li>
+                    <?php if ($totalRows < 1) : ?>
+                        <li class="wWhitePgItem wWhitePGnumber">0</li>
+                    <?php else : ?>
+                        <?php for ($i = $page - 2; $i <= $page + 2; $i++) :
+                            if ($i >= 1 and $i <= $totalPages) :
+                                $qs['page'] = $i;
+                        ?>
+                                <!--頁數號碼-->
+                                <li class=" wWhitePgItem wWhitePGnumber <?= $i == $page ? 'wWhitePgColor' : '' ?>"><a class="wWhitePgLink" href="?classid=<?= $tableid ?>&<?= $optionforpg ?>&<?= $optionforpg2 ?>&sort=<?= $sort ?>&<?= http_build_query($qs) ?>"><?= $i ?></a></li>
 
-                        <?php endif; ?>
-                    <?php endfor; ?>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                    <?php endif; ?>
 
 
                     <!--橫向顯示頁碼終止-->
@@ -505,7 +530,6 @@ $rows = $pdo->query($p_sql)->fetchAll();
                     <!--最後一頁button-->
                     <li class="wWhitePgItem"><a class="wWhitePgLink" href="#"><i class="fas fa-angle-double-right"></i></a>
                     </li>
-
                 </ul>
 
                 <!--區隔撐開頁尾的空間-->
@@ -601,7 +625,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
 
                 //umahelper在超過輪播牆時出現,超過商品區第一列時消失
-                var itemTop = $('.shpItem-CL').offset().top;
+                var itemTop = $('.shpHotTitle-CL').offset().top;
                 if ((mouseScroll > itemCaroTop) && (mouseScroll < itemTop)) {
                     $('.umaHelper-CL').css('display', 'block');
                     $('.umaConvert-CL').css('display', 'block');
@@ -613,15 +637,12 @@ $rows = $pdo->query($p_sql)->fetchAll();
             })
         }
 
-
-
         //點選零件篩選區收合btn,則收合至只剩下已選擇之篩選項目
         let uP = 0;
         $('.itemCollapse-CL').click(function() {
             $('.itemFilterBrandImg-CL').toggle();
             $('.itemFilter-CL table').toggle();
         })
-
 
         //siteBtn按鈕選擇效果
         $('.siteBtnInner-CL').click(function() {
@@ -691,6 +712,7 @@ $rows = $pdo->query($p_sql)->fetchAll();
 
         //加入追蹤
         const addToFollowtBtn = $('.shpHeart-CL');
+        let count1 = 0;
         addToFollowtBtn.click(function() {
             const card = $(this).parent().prev('a');
             const sid = card.attr('data-sid');
@@ -704,7 +726,17 @@ $rows = $pdo->query($p_sql)->fetchAll();
             }, function(data) {
                 console.log(data);
             }, 'json');
+            setTimeout(function() {
+                $('.nav-follow-CL').css('color', '#7FE0DC');
+            }, 100);
+            setTimeout(function() {
+                $('.nav-follow-CL').css('color', 'white');
+            }, 500);
+            $(this).removeClass('far');
+            $(this).addClass('fas');
         })
+
+
 
         //手機版-篩選功能
         $('.fa-chevron-up').toggle();

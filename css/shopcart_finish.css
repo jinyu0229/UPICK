@@ -9,6 +9,9 @@ label,ul
     margin: 0 auto;
 }
 
+.navbar-nav{
+    margin: 0;
+}
 
 .container{
     max-width: 1200px;

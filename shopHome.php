@@ -87,7 +87,7 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
 
 </head>
 
-<body>
+<body class="shpScrollCtrl-CL">
     <?php include __DIR__ . '../parts/html_navbar.php' ?>
     <!--固定元件:UMA小幫手html-->
     <?php include __DIR__ . '../parts/html_fixed_element.php' ?>
@@ -178,7 +178,7 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
                 <div class="aniUpick-CL">
                     <h1>UPICK</h1>
                     <h4>想組裝適合自己的電腦嗎？</h4>
-                    <h4 class="aniUpickWord-CL">那就交給UPICK吧！ <i class="fas fa-angle-double-right"></i></h4>
+                    <h4 class="aniUpickWord-CL"><a href="/Upick/web/upick/upick-0.php" style="color:#7FE0DC;"> 那就交給UPICK吧！ <i class="fas fa-angle-double-right"></i></a></h4>
 
                     <!--upick大LOGO圖-->
                     <div class="aniLogoU-CL">
@@ -193,7 +193,7 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
                 <div class="aniWepick-CL">
                     <h1>WEPICK</h1>
                     <h4> 覺得組裝電腦跟挑選適合自己的筆電很困難嗎？</h4>
-                    <h4 class="aniWepickWord-CL"><i class="fas fa-angle-double-left"></i> 讓WEPICK來幫助你吧！</h4>
+                    <h4 class="aniWepickWord-CL"><a href="/Upick/web/wepick/wepick-0.php" style="color:#FF8888;"><i class="fas fa-angle-double-left"></i> 讓WEPICK來幫助你吧！</a> </h4>
 
                     <!--wepick大LOGO圖-->
                     <div class="aniLogoW-CL">
@@ -348,7 +348,7 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
                             <div class="col">
                                 <a href="/Upick/web/product/dtl_page.php?pid=<?= $r['sid'] ?>&classid=01cpu" data-sid="<?= $r['sid'] ?>" data-tbid="01cpu">
                                     <img class="shpProductImg_CL" src="<?= WEB_ROOT ?>/images/product/01cpu/<?= $r['imgs'] ?>.jpg" alt="">
-                                    <div class="shpItemInfo-CL data-sid=" <?= $r['item'] & $r['id'] ?>">
+                                    <div class="shpItemInfo-CL" data-sid=" <?= $r['item'] & $r['id'] ?>">
                                         <p class="shpItemInfoP-CL"><?= $r['name'] ?></p>
                                 </a>
                                 <div class="shpHotCartInfo-CL"><i class="far fa-heart shpHeart-CL"></i><i class="fas fa-shopping-cart shpShopCar-CL"></i> <span class="shpItemDollor-CL"><?= $r['price'] ?></span></div>
@@ -710,14 +710,14 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
 
 </div>
 <!--頁尾-->
-<?php include __DIR__ . '../parts/html_footer.php' ?>
+<?php include __DIR__ . '/parts/html_footer.php' ?>
 </div>
 </div>
 
 
 
 <!--SCRIPT-->
-<?php include __DIR__ . '../parts/scripts.php' ?>
+<?php include __DIR__ . '/parts/scripts.php' ?>
 <?php include __DIR__ . '/web/shopcar/cart-script.php' ?>
 <?php include __DIR__ . '/web/member/follow-script.php' ?>
 <script>
@@ -754,8 +754,35 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
         }, function(data) {
             console.log(data);
         }, 'json');
+        setTimeout(function() {
+            $('.nav-follow-CL').css('color', '#7FE0DC');
+        }, 100);
+        setTimeout(function() {
+            $('.nav-follow-CL').css('color', 'white');
+        }, 500);
+        $(this).removeClass('far');
+        $(this).addClass('fas');
     })
 
+
+    //點擊商場btn後的應顯示區塊
+    var url = [window.location.href];
+    if (url == 'http://localhost/Upick/shopHome.php?aniarea=none&shparea=block') {
+
+        $('body').removeClass('shpScrollCtrl-CL');
+        //商場出現
+        $('.shpTop-CL').css('display', 'block');
+        //頁尾出現
+        $('.shpFooterOut-CL').css('display', 'block');
+        $('.shpFooterColor-CL').css('display', 'block');
+
+        //scrollBar出現
+        $('.scrollBar-CL').css('display', 'block');
+        //searchBar出現
+        $('.navSearch-CL').css('display', 'block');
+
+        $('body').css('height', '100vh');
+    }
 
 
 
@@ -771,6 +798,7 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
             $('.aniContainer-CL').css('display', 'none');
             $('.umaHelper-CL').css('display', 'none');
             $('.umaConvert-CL').css('display', 'none');
+            $('.siteBtn-CL').css('display', 'none');
         }
 
         //WEB版-各區域在初始顯示方式
@@ -778,8 +806,8 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
             //商場不出現
             //$('.shpTop-CL').css('display', 'none');
             //頁尾不出現
-            $('.shpFooterOut-CL').css('display', 'none');
-            $('.shpFooterColor-CL').css('display', 'none');
+            //$('.shpFooterOut-CL').css('display', 'none');
+            //$('.shpFooterColor-CL').css('display', 'none');
             //scroll不出現
             $('.scrollBar-CL').css('display', 'none');
             //搜尋BAR不出現
@@ -799,6 +827,7 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
 
             //按下向下滑動之btn後
             $('.aniScroll-CL').click(function() {
+                $('body').removeClass('shpScrollCtrl-CL');
                 //商場出現
                 $('.shpTop-CL').css('display', 'block');
                 //頁尾出現
@@ -820,6 +849,11 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
                         .css('opacity', '1');
                 }, 1000);
             })
+
+
+
+
+
             //UPICK熱銷商品頁籤預設顯示
             $('.shpUpHot-CL .shpPageMartBtn-CL:nth-child(1)').css('backgroundColor', '#7FE0DC');
 
@@ -828,6 +862,18 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
         }
     })
 
+    $('.nav-link').click(function() {
+        $('body').removeClass('shpScrollCtrl-CL');
+        //商場出現
+        $('.shpTop-CL').css('display', 'block');
+
+    })
+
+    //文字搜尋按鈕在此頁面不可點擊
+    $(".wSearcBtn").attr('disabled', true);
+    document.getElementById("wSearchText-CL").value = '此頁面不可進行文字搜尋';
+    $('.wSearchInputBox').css('border', '1px solid #383E44');
+    $('.wSearcBtn').css('backgroundColor', '#a3a3a3');
 
 
     //動態更新scrollbar高度
@@ -918,12 +964,6 @@ $screenrow2 = $pdo->query($screen2)->fetchAll();
         setTimeout(function() {
             $('.aniWepickOut-CL').css('width', finalWidth)
         }, 20);
-    })
-
-
-    //點擊navBar首頁button即導回首頁
-    $('.navHome-CL').click(function() {
-        location.reload();
     })
 
 

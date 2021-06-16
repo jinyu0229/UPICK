@@ -15,31 +15,70 @@
     <link rel="stylesheet" href="/Upick/css/upick-phone.css" type="text/css"
         media="only screen and (min-width: 0px) and (max-width: 767px)" />
     <style>
-        .up-back {
-            width: 100%;
-            height: 60px;
-            background-color: #383E44;
-            top: 0;
-            position: fixed;
-            z-index: 5;
+        .up-productlist {
+            border: 1px solid #E4E8EE;
+            border-radius: 4px;
+            padding: 16px;
+            /* background-color: #E4E8EE; */
+            margin-left: 10px;
         }
 
-        .up-back a {
-            color: #fff;
-            font-size: 28px;
-            padding: 20px;
+        .up-productlist-title {
+            color: #E4E8EE;
+            text-align: center;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .up-productlist-product {
+            display: flex;
+            justify-content: space-between;
+            border-bottom: 1px solid #ddd;
+            padding: 5px 20px;
+        }
+
+        .up-productlist-product p {
+            color: #E4E8EE;
+
+        }
+
+        .up-productlist-totleprice {
+            color: #E4E8EE;
+        }
+
+        .wWhitePgAreaHTML9 {
+            z-index: 10;
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            /* display: none; */
+        }
+
+        .cover {
+            background: #000;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            filter: blur(2px);
+            opacity: 0.5;
+            /* display: none; */
+            z-index: 2
+        }
+
+        .fa-copy {
+            color: #383E44;
         }
     </style>
 </head>
 
 
-<body  style="background-color:#383E44">
-   <!-- last step -->
-   <div class="up-back d-lg-none">
-        <a class="wWhitePgLink" href="/Upick/web/upick/upick-0.php"><i class="fas fa-angle-left"></i></a>
-    </div>
-   <!-- 分享頁面 -->
-   <div class="wWhitePgAreaHTML9">
+<body>
+    <!--navbar-->
+    <?php include __DIR__ . '/../../parts/html_navbar.php' ?>
+    <div class="container up-container">
+    <!-- 分享頁面 -->
+    <div class="wWhitePgAreaHTML9">
         <div class="wShareDark windowShare">
             <div class="wWinDarkClo"><i class="fas fa-times"></i></div>
             <h4>分享</h4>
@@ -56,7 +95,6 @@
             </div>
         </div>
     </div>
-
     <!-- <div class="cover"> -->
     <div>
         <div class="container up-container">
@@ -112,22 +150,21 @@
         integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script>
 
-        $('.wWhitePgAreaHTML9').hide();
+     $('.wWhitePgAreaHTML9').hide();
 
-        $(document).ready(function(){
-            $('.btn-share').on('click',function () {
+    $(document).ready(function () {
+            $('.btn-share').click(function () {
                 console.log('hi');
                 $('.wWhitePgAreaHTML9').show();
-                $('.windowShare').show();
                 $('.up-container').parent().addClass('cover'); //顯示遮罩層
-            });
 
-            $('.fa-times').on('click',function () {
+            });
+            $('.wWinDarkClo').click(function () {
                 $('.wWhitePgAreaHTML9').hide();
                 console.log('hello');
                 $('.up-container').parent().removeClass('cover');
             });
-        });
+    });
       
     </script>
 </body>

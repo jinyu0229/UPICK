@@ -4,7 +4,7 @@ define('WEB_ROOT', '/UPICK');
 session_start();
 
 $email = $_SESSION['loginUser'];
-$sql = "SELECT `id`, `order_date`, `commodity_status`, `shipping_status`, `shipping_method`, `payment`, `amount` FROM orders WHERE email=?";
+$sql = "SELECT * FROM orders WHERE email=?";
 $stmt = $pdo->prepare($sql);
 $stmt->execute([$email]);
 // $order = $pdo->query($sql)->fetchAll();
@@ -25,6 +25,7 @@ if ($stmt->rowCount()) {
     <!--檔頭外掛-->
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
     <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
+    <?php include __DIR__ . '/../../web/shopcar/cart-script.php' ?>
     <!-- memberOrder.css -->
     <link rel="stylesheet" href="/Upick/css/memberOrder.css">
 </head>

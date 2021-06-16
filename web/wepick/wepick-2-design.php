@@ -17,6 +17,8 @@ if ($tableid != ('18drawing_com' or '19gaming_com')) {
 $draw = "SELECT * FROM $tableid WHERE id BETWEEN $between1 AND $between2";
 $draw1 = $pdo->query($draw)->fetchAll();
 
+if(! isset($_SESSION))
+
 ?>
 
 <!DOCTYPE html>
@@ -79,7 +81,7 @@ $draw1 = $pdo->query($draw)->fetchAll();
                     <div class="list-unstyled d-flex wp-wrap ">
                         <?php foreach ($draw1 as $r) { ?>
                         <div class="col-lg-4 col-sm-12">
-                            <div class="wp-row">
+                            <div class="wp-row" data-sid="<?= $r['sid'] ?>">
                                 <img src="<?= WEB_ROOT ?>/images/product/<?= $tableid ?>/<?= $r['imgs'] ?>.jpg" alt="">
                                 <h5 class="wp-2-producttitle"><?= $r['brand'] ?></h5>
                                 <div class="product-info">
@@ -106,14 +108,14 @@ $draw1 = $pdo->query($draw)->fetchAll();
                     <div class="totalPrice">
                         <h5>
                             總價
-                            <span class="price">
-                                $3000
+                            <span class="price" id="price">
+                                $0
                             </span>
                         </h5>
                     </div>
                     <!-- 按鍵 -->
                     <div class="d-flex justify-content-center">
-                        <button class="btn wp-button wBtnNPk btn-next">結帳</button>
+                        <button class="btn wp-button wBtnNPk">結帳</button>
                     </div>
                 </div>
             </div>
@@ -127,9 +129,27 @@ $draw1 = $pdo->query($draw)->fetchAll();
 
     <script>
      // 選擇後新增li
+
+
      $(document).on('click', '#wp-btn-product', function () {
-            console.log('hi')
-            $("#wpList").append('<div class="list-group-item d-flex"><p class= "col-9 my-auto" > HyperX FURY DDR4 3200 8G x2 桌上型超頻記憶體 HX432C16FB3K2 / 16 </p><h5 class="price col-3 my-auto">$1000</h5></div >');
+
+        $("#wpList").empty();
+        $("#price").empty();
+
+        const row = $(this).closest('.wp-row');
+        const sid = row.attr('data-sid');
+        const qty = 1;
+
+            console.log('hi',{sid, qty }, row.find('.card-title').text() )
+            let wp_price = $(this).prevAll()[0];
+            console.log($(wp_price).text());
+            let wp_name = $(this).prevAll()[1];
+            console.log($(wp_name).contents()[1].innerText);
+
+            $("#wpList").append('<div class="list-group-item d-flex"><p class= "col-9 my-auto" >'+$(wp_name).contents()[1].innerText+'</p><h5 class="price col-3 my-auto">'+$(wp_price).text()+'</h5></div >');
+
+$("#price").append($(wp_price).text());
+          
         })
 
         let newsPage = 0;
@@ -152,6 +172,8 @@ $draw1 = $pdo->query($draw)->fetchAll();
         })
 
         $('.wp-row').odd().addClass('wp-row-p')
+
+        
     </script>
 </body>
 

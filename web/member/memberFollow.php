@@ -19,6 +19,7 @@ $pageName = 'member';
     <!--檔頭外掛-->
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
     <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
+    <?php include __DIR__ . '/../../web/shopcar/cart-script.php' ?>
     <!-- memberFollow.css -->
     <link rel="stylesheet" href="/Upick/css/memberFollow.css">
 
@@ -195,6 +196,7 @@ $pageName = 'member';
         }, function(data) {
             console.log(data);
             showCartCount(data); // 更新選單上數量的提示
+            location.reload();
         }, 'json');
     })
 </script>

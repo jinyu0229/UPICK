@@ -2,6 +2,10 @@
     outline:1px solid;
 } */
 
+body{
+    background-color: #F5F6F8;
+}
+
 .row{
     margin-right: 0;
     margin-left: 0;
@@ -16,8 +20,11 @@ button:focus{
     /* background-color: #D2D8E2; */
     max-width: 1200px;
     margin: 0px auto;
+    height: 800px;
+    background-color: #FFF;
+    box-shadow: 3px 3px 10px #E4E8EE;
     /* border-radius: 8px; */
-    padding-top: 150px;
+    padding-top: 300px;
 }
 
 .carContent_HC{
@@ -125,8 +132,7 @@ button:focus{
 
 /*此div撐開footer上方的留白空間*/
 .shpFooterSpace-CL {
-    height: 100px;
-    width: 1300px;
+    display: none;
 }
 
 .shpFooterOut-CL{

@@ -16,8 +16,8 @@ session_start();
     <!--檔頭外掛-->
     <?php include __DIR__ . '/../../parts/html_head.php' ?>
     <?php include __DIR__ . '/../../parts/html_navbar_phone.php' ?>
+    <?php include __DIR__ . '/../../web/shopcar/cart-script.php' ?>
     <!-- memberCentre.css -->
-    <link rel="icon" href="/Upick/icon/favicon.ico">
     <link rel="stylesheet" href="/Upick/css/memberCentre.css">
 </head>
 

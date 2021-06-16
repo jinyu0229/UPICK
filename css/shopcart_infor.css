@@ -11,6 +11,10 @@ label,ul
     /* color: #383E44; */
 }
 
+.upick-navbar-container{
+    margin: auto;
+}
+
 .boxhideZY{
     display: none;
 }
